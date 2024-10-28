@@ -49,10 +49,10 @@ initializeShowcase.innerHTML = `
 
 // DUMMY DATA FOR TABLE
 const registeredSeatsData = [
-    { regisNo: 'A12345', facePhoto: 'melo-bby.jpg', name: 'Mewo Lee', seatNo: 'G11' },
-    { regisNo: 'B67890', facePhoto: 'melo-bby.jpg', name: 'Meo Ling', seatNo: 'G10' },
-    { regisNo: 'A12345', facePhoto: 'melo-bby.jpg', name: 'Meyo Wii', seatNo: 'G9' },
-    { regisNo: 'B67890', facePhoto: 'melo-bby.jpg', name: 'Me Lo', seatNo: 'G8' }
+    { regisNo: 'A12345', facePhoto: 'stakeholder-melo.jpg.jpg', name: 'Mewo Lee', seatNo: 'G11' },
+    { regisNo: 'B67890', facePhoto: 'stakeholder-melo.jpg.jpg', name: 'Meo Ling', seatNo: 'G10' },
+    { regisNo: 'A12345', facePhoto: 'stakeholder-melo.jpg.jpg', name: 'Meyo Wii', seatNo: 'G9' },
+    { regisNo: 'B67890', facePhoto: 'stakeholder-melo.jpg.jpg', name: 'Me Lo', seatNo: 'G8' }
 ];
 
 
@@ -244,35 +244,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".totalSeats").innerHTML = "150";
     document.querySelector(".availableSeats").innerHTML = availableSeats;
 });
-
-
-
-/*function executeSubmit() {
-    const hiddenField = document.querySelector(".HiddenFieldDataHere");
-    //const hiddenField2 = document.querySelector(".HiddenFieldDataHere2");
-
-    var parentWindow = window.parent;
-    var username = parentWindow.document.getElementById('user_name2');
-
-
-    var dropdownList = document.querySelector(".dropDownSelect");
-    console.log(dropdownList);
-    
-    var str = hiddenField.innerHTML;
-    $.ajax({
-        type: "POST",
-        url: "Schedule-User.aspx/updateData",
-        data: JSON.stringify({ a: str, username: username.innerText, schedID: dropdownList.value }), 
-        contentType: "application/json; charset=utf-8",
-        dataType: "text",
-        success: function (response) {
-            console.log("Function executed successfully: " + response);
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            console.error("Error executing function: " + thrownError);
-        }
-    });
-}*/
 
 const timeslots = document.querySelectorAll('.timeslot');
 
