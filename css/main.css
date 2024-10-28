@@ -11,7 +11,7 @@
 }
 
 body {
-    /* background: #000000; */
+    background: #000000; 
     font-family: 'Poppins', 'sans serif';
 }
 
@@ -24,37 +24,45 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 30px 100px;
+    z-index: 10;
 }
 
 .logo {
     font-size: 40px;
-    color: #ffffff;
+    color: #e50914;
     letter-spacing: 1px;
     font-weight: 800;
 }
 
+.nav {
+    display: flex;
+}
+
 .nav li {
     list-style: none;
-    margin: 0 10px;
+    margin: 0 18px;
+    cursor: pointer;
+    color: #ffffff;
 }
 
 .nav li a {
-    color: #ffffff;
+    color: #ffffff; /* Same color as the homepage */
     text-decoration: none;
-    font-weight: 500;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: 0.3s
+    transition: color 0.3s;
 }
 
-.nav li:hover a {
+.nav li a:hover {
+    color: var(--primary); /* Use the primary color variable for hover */
+}
+
+.nav li:hover  {
     color: var(--primary);
 }
 
 .search {
-    position: absolute;
+    position: relative;
     width: 300px;
-    height: 400px;
+    height: 40px;
 }
 
 .search input {
@@ -68,6 +76,293 @@ header {
     border: 1 solid rgba(255, 255, 255, 0.5);
     outline: none;
     border-radius: 4px;
-    padding: 0 10px 0 45px !important
+    padding: 0 10px 0 45px !important;
+    backdrop-filter: blur(10px);
 }
 
+.search input::placeholder {
+    color: #ffffff;
+}
+
+.search i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    padding-right: 10px;
+    color: #ffffff;
+    border-right: 1px solid #ffffff;
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: url('../images/movies/inside-out-2.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.banner::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.content {
+    position: relative;
+    max-width: 550px;
+    display: none;
+    visibility: hidden;
+    transform: scale(0);
+    transition: 0.5s;
+}
+
+.content.active {
+    display: block;
+    visibility: visible;
+    transform: scale(1);
+    transition: 0.5s;
+}
+
+.movie-title {
+    max-width: 250px;
+}
+
+.banner .content h6 {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.banner .content h6 span {
+    padding: 0 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.banner .content h6 span:first-child {
+    padding-left: 0;
+}
+
+.banner .content h6 span:last-child {
+    border-right: none;
+}
+
+.banner .content h6 span i {
+    background: var(--primary);
+    color: #ffffff;
+    padding: 0 8px;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.banner .content p {
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.5em;
+    text-align: justify;
+    color: #ffffff;
+    margin: 10px 0 20px;
+}
+
+.banner .content .button {
+    position: relative;
+}
+
+.banner .content .button a {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    background: var(--primary);
+    color: #ffffff;
+    padding: 6px 20px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.banner .content .button a:nth-child(2) {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.banner .content .button a:hover:nth-child(2) {
+    background: var(--primary);
+}
+
+.banner .carousel-box {
+    position: relative;
+    min-width: 950px;
+    height: 400px;
+    display: flex;
+    margin-left: 15px;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+} 
+
+.carousel {
+    position: relative;
+    height: 550px;
+
+}
+
+.carousel .carousel-item {
+    width: 250px;
+    cursor: pointer;
+}  
+
+.carousel .carousel-item img {
+    max-width: 235px;
+    border-radius: 10px;
+    transform: translateX(8px) translateY(-100px);
+    object-fit: cover;
+    object-position: center;
+}
+   
+.play {
+    position: absolute;
+    bottom: 50px;
+    left: 100px;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.2em;
+    cursor: pointer !important;
+    transition: 0.2s;
+}
+
+.play i {
+    margin-right: 10px;
+    font-size: 40px;
+    cursor: pointer !important;
+}
+
+/*FOR BOOKING SECTION*/
+
+/* Container for the bookings section */
+.bookings-banner {
+    position: relative;
+    width: 100%;
+    min-height: 180px;
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    max-width: 800px;
+}
+
+.bookings-banner-title {
+    font-size: 2.2em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.bookings-banner-description {
+    font-size: 1.1em;
+    font-weight: 300;
+    color: #dddddd;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* Bookings Container */
+.bookings-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Card Styles */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    background: #222;
+    transition: transform 0.3s;
+    max-width: 300px;
+    min-height: 400px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Card Image */
+.card-image img {
+    width: 100%;
+    height: auto;
+}
+
+/* Card Content */
+.card-content {
+    color: #dddddd;
+    padding: 10px;
+}
+
+/* Card Title */
+.card-title {
+    padding: 10px;
+    font-size: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    text-align: left;
+}
+
+/* Media Queries for Containers*/
+@media (max-width: 768px) {
+    .bookings-container {
+        grid-template-columns: 1fr;
+    }
+    .card {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bookings-container {
+        gap: 30px;
+    }
+    .card {
+        max-width: 280px;
+        min-height: 380px;
+        margin: 15px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .bookings-container {
+        gap: 40px;
+    }
+    .card {
+        max-width: 300px;
+        min-height: 400px;
+        margin: 20px;
+    }
+}
