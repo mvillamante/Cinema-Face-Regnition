@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --seat-available-color: #58AF50;
+    --seat-hover-color: #D2D12D;
+    --seat-selected-color: #FFA500;
+    --seat-taken-color: #CF3038;
+    --white-text-color: #F2F2F2;
+    --black-text-color: #1B1B1B;
+    --highlight-color: #292727;
+}
+
+body, html {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+* {
+    color: var(--white-text-color);
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+.DivisionContainer {
+    display: flex;
+}
+
+.SeatContainer {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    height: max-content;
+    align-items: center;
+}
+
+.numbering,
+.subSeatContainer {
+    display: grid;
+    width: max-content;
+    height: max-content;
+    grid-gap: 6px;
+    place-items: center;
+}
+
+.numbers,
+.seatCon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    font-size: 13px;
+}
+
+.seatCon[data-seat-status="Free"] {
+    background-color: var(--seat-available-color);
+    color: var(--white-text-color);
+}
+
+.seatCon[data-seat-status="Selected"] {
+    background-color: var(--seat-selected-color);
+    color: var(--black-text-color);
+}
+
+.seatCon[data-seat-status="Occupied"] {
+    background-color: var(--seat-taken-color);
+    color: var(--black-text-color)
+}
+
+.seatCon[data-seat-status="Free"]:hover {
+    background-color: var(--seat-hover-color);
+}
+
+.highlight {
+    background-color: var(--highlight-color); 
+    transition: background-color 0.5s ease;
+}

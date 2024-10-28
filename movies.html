@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+        <link rel="stylesheet" href="css/movies.css">
+        <title>CineBio Booking Page</title>
+    </head>
+    <body>
+        <!--Display Navigation Bar-->
+        <div class="NavBarContainer"></div>
+
+        <div class="cinemabooking-sidepage">
+            <label class="cinema-number">Cinema #</label>
+            <div class="timeslots-container">
+                <label class="sidepage-text">Time Slot:</label>
+                <div class="timeslots-content">
+                    <div class="timeslot active">2:30pm-4:10pm</div>
+                    <div class="timeslot">5:20pm-7:00pm</div>
+                </div>
+                <label class="sidepage-margin-text">Selected Seats (<label class="selectedSeats">0</label>):</label>
+                <div class="sidepage-center-text" id="selectedSeatDisplay">None</div>
+                <label class="sidepage-margin-text">Price:</label>
+                <div class="sidepage-center-text">₱0.00</div>
+            </div>
+            <button class="btnSeats" onclick="executeSubmit()">Book Seats</button>
+        </div>
+        <div class="cinemabooking-page">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <!--<div class="HiddenFieldDataHere" id="selectedSeatsData" runat="server" style="display: none"></div>
+            <div class="HiddenFieldDataHere3" id="occupiedSeatsData" runat="server" style="display: none"></div>
+            <div class="HiddenFieldDataName2" id="userLoggedIn" runat="server" style="display: none"></div>
+            <asp:HiddenField ID="hdnGeneratedData" runat="server" />-->
+
+            <div class="cinema-seating">
+                <link rel="stylesheet" href="css/seatings.css">
+
+                <div class="title">Movie Name</div>
+                <div class="screentext">ALL EYES HERE</div>
+
+                <div class="DivisionContainer"></div>
+                <ul class="showcase">
+                    <li>
+                        <div class="seat"></div>
+                        <small>Available</small>
+                    </li>
+                    <li>
+                        <div class="seat selected"></div>
+                        <small>Selected</small>
+                    </li>
+                    <li>
+                        <div class="seat taken"></div>
+                        <small>Taken</small>
+                    </li>
+                </ul> 
+            
+            </div>
+            <div class="cinema-container">
+                <div class="cinema-details"></div>
+                <div class="seating-details">
+                    <div class="seating-title" onclick="toggleDropdown()">Seating Information ▼</div>
+                    <div class="seating-content">
+                        <table id="seatingTable">
+                            <thead>
+                                <tr>
+                                    <th>Registration Number</th>
+                                    <th>Face Photo</th>
+                                    <th>Name</th>
+                                    <th>Seat No.</th>
+                                </tr>
+                            </thead>
+                            <tbody><!-- Rows will be dynamically added here --></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="js/navbar.js"></script>
+    <script src="js/seatings.js"></script>
+</html>

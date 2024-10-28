@@ -1,0 +1,310 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --main-background-color: #202124;
+    --content-background-color: #191f18;
+    --cinema-container-color: #3C3C3C;
+    --cinema-container-lighter-color: #5c5959;
+    --cinema-container-darker-color: #2f312f;
+    --light-text-color: #fff;
+    --dark-text-color: #000;
+    --btn-color-1: #C10214;
+
+    --th-color: #2c2a2a;
+    --td-firstcell-color: #333333;
+
+    --seat-available-color: #58AF50;
+    --seat-selected-color: #FFA500;
+    --seat-taken-color: #CF3038;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: var(--main-background-color);
+    margin-top: 225px;
+}
+
+/* BOOKING PAGE===============================*/
+.cinemabooking-page {
+    align-items: center;
+    justify-content: center;
+    color: var(--light-text-color);
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    /*background-color: pink;*/
+}
+
+.cinema-seating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.cinema-seating .title{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.cinema-seating .screentext{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 17px;
+    margin: 5px auto; 
+    background-color: var(--td-firstcell-color);
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    color: var(--dark-text-color);
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 15px;
+    text-align: center; 
+    box-sizing: border-box;
+}
+
+.cinema-seating .showcase {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: var(--light-text-color);
+    list-style-type: none;
+    display: flex; 
+}
+
+.cinema-seating .showcase li {
+    display: flex; 
+    align-items: center; 
+    margin: 0 10px;
+}
+
+.cinema-seating .showcase li small {
+    margin-left: 10px;
+}
+
+/*Side Page===============================*/
+.cinemabooking-sidepage {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 390px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    color: var(--light-text-color);
+    background-color: var(--cinema-container-color);
+    z-index: 1000;
+    padding: 30px;
+}
+
+.cinema-number{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.timeslots-container{
+    padding: 20px;
+}
+
+.timeslots-content {
+    display: flex;
+    gap: 10px; /* Adds space between the time slots */
+}
+
+.timeslot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    border: 2px solid #333;
+    color: #d1cdcd;
+    font-size: 14px;
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+}
+.timeslot.active{
+    background: var(--cinema-container-darker-color);
+    color: var(--light-text-color);
+}
+
+.sidepage-text, .sidepage-margin-text{
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.sidepage-margin-text{
+    margin-top: 25px;
+}
+
+.sidepage-center-text{
+    text-align: center;
+}
+
+#selectedSeatDisplay{
+    background: var(--cinema-container-lighter-color);
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid #333;
+    color: #d1cdcd;
+}
+
+/*Seat Tab==============================*/
+.seat {
+    background-color: var(--seat-available-color);
+    height: 12px;
+    width: 15px;
+    margin: 3px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.seat.selected {
+    background-color: var(--seat-selected-color);
+}
+
+.seat.taken {
+    background-color: var(--seat-taken-color);
+}
+
+
+
+.cinema-container {
+    display: fixed;
+    justify-content: center;
+    align-items: center;
+    margin: auto 25px;
+    padding: 20px;
+}
+
+/*Cinema Details ====================================*/
+
+.cinema-details {
+    position: relative;
+    border-radius: 21px;
+    background-color: var(--cinema-container-color);
+    margin: 0 auto;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.cinema-details .cinema-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cinema-details .cinema-content label {
+    margin: 0 20px 5px 20px;
+    font-weight: 500;
+    display: flex;
+}
+
+
+/*Seating Details=========================================*/
+.seating-details {
+    display: fixed;
+    border-radius: 21px;
+    background-color: var(--cinema-container-color);
+    margin-top: 10px;
+    padding: 25px;
+    overflow: hidden;
+}
+
+.seating-details .seating-title {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;              
+    border-radius: 8px;    
+    cursor: pointer;     
+}
+
+.seating-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.seating-content.open {
+    max-height: max-content;
+    margin-bottom: 25px;
+}
+
+
+.seating-details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.seating-details th, .seating-details td {
+    /*border: 2px solid #333;*/
+    padding: 20px;
+    text-align: center;
+}
+
+.seating-details td:first-child{
+    background-color: var(--td-firstcell-color);
+}
+
+.seating-details th {
+    background-color: var(--th-color);
+    color: #fff;
+}
+
+.seating-details img {
+    width: 50px;
+    height: 50px;
+    border-radius: 15%;
+}
+
+
+/*Assign Seat/s============================================*/
+.btnSeats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    padding: 5px;
+    border: none;
+    border-radius: 65px;
+    width: 70%;
+    color: var(--light-text-color);
+    background-color: var(--btn-color-1);
+}
+
+.btnSeats:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+}
+
+.btnSeats:active {
+    transform: translateY(0);
+    box-shadow: none;
+    cursor: pointer;
+}
+
+
