@@ -180,6 +180,15 @@ body {
     color: #d1cdcd;
 }
 
+.sidepage-summary{
+    margin-top: 15px;
+    font-size: 10px;
+}
+
+.sidepage-summary .availableSeats, .sidepage-summary .totalSeats{
+    font-size: 20px;
+}
+
 /*Seat Tab==============================*/
 .seat {
     background-color: var(--seat-available-color);

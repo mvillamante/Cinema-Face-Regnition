@@ -1,3 +1,30 @@
+//DUMMY DATA FOR ACCOUNTS
+const registeredAccData = [
+    { accNo: 'USR-0001' , email: '@', password: 'secret', name: 'Mewo Lee'},
+    { accNo: 'USR-0002', email: '@', password: 'secret', name: 'Meo Ling'},
+    { accNo: 'USR-0003', email: '@', password: 'secret', name: 'Meyo Wii'},
+    { accNo: 'USR-0004', email: '@', password: 'secret', name: 'Me Lo'},
+    { accNo: 'ADM-0001', email: '@', password: 'secret', name: 'Enna Ming'}
+];
+
+// DUMMY DATA FOR TABLE
+const registeredSeatsData = [
+    { accNo: 'USR-0001' ,regisNo: '241029901-0001', facePhoto: '/images/stakeholder-melo.jpg', name: 'Mewo Lee', seatNo: 'G11', timeAssigned: '5:20pm-7:00pm'},
+    { accNo: 'USR-0002', regisNo: '241029901-0002', facePhoto: '/images/stakeholder-melo.jpg', name: 'Meo Ling', seatNo: 'G10', timeAssigned: '2:30pm-4:10pm' },
+    { accNo: 'USR-0003', regisNo: '241029901-0003', facePhoto: '/images/stakeholder-melo.jpg', name: 'Meyo Wii', seatNo: 'G9', timeAssigned: '2:30pm-4:10pm' },
+    { accNo: 'USR-0004', regisNo: '241029901-0004', facePhoto: '/images/stakeholder-melo.jpg', name: 'Me Lo', seatNo: 'G8', timeAssigned: '5:20pm-7:00pm' },
+]; 
+
+// CHECK IF THE ACCOUNT IS USER OR ADMIN (temporary)
+var currentAccountNo = 'USR-0001';
+//var currentAccountNo = 'ADM-0001';
+
+// Function to check the account type (admin or user)
+function checkAccountType(currentAccountNo) {
+    return currentAccountNo.startsWith('ADM') ? 'admin' : 'user';
+}
+var accountType = checkAccountType(currentAccountNo);
+
 
 //Seating Arrangement
 var initializeSeats = document.querySelector(".DivisionContainer");
@@ -32,28 +59,45 @@ initializeSeats.innerHTML = `
 </div>
 `
 
+// Only Show Specific Functions if (Admin or User)
 var initializeShowcase = document.querySelector(".cinema-details");
-initializeShowcase.innerHTML = `
-<div class="cinema-content">
-    <div>
-        <label>Selected Seats: </label><label class="selectedSeats">0</label>
+var initializeSeatDetails = document.querySelector(".seating-details");
+var initializeSidepageSummary = document.querySelector(".sidepage-summary");
+if (accountType === 'user') {
+    initializeSeatDetails.style.display = 'none';
+    initializeSidepageSummary.style.display = 'none';
+    initializeShowcase.innerHTML = `
+    <div class="cinema-content">
+        <div>
+            <label>Selected Seats: </label><label class="selectedSeats">0</label>
+        </div>
+        <div>
+            <label>Available Seats:</label><label class="availableSeats"></label>
+        </div>
+        <div>
+            <label>Total Seats:</label><label class="totalSeats"></label> 
+        </div>
     </div>
-    <div>
-        <label>Available Seats:</label><label class="availableSeats"></label>
-    </div>
-    <div>
-        <label>Total Seats:</label><label class="totalSeats"></label> 
-    </div>
-</div>
-`
+    `
+} else if (accountType === 'admin'){
+    var labels1 = document.querySelectorAll(".sidepage-margin-text");
+    var labels2 = document.querySelectorAll(".sidepage-center-text");
+    var btn1 = document.querySelector(".btnSeats");
 
-// DUMMY DATA FOR TABLE
-const registeredSeatsData = [
-    { regisNo: 'USR-A12345', facePhoto: '/images/stakeholder-melo.jpg', name: 'Mewo Lee', seatNo: 'G11' },
-    { regisNo: 'USR-B67890', facePhoto: '/images/stakeholder-melo.jpg', name: 'Meo Ling', seatNo: 'G10' },
-    { regisNo: 'USR-A12345', facePhoto: '/images/stakeholder-melo.jpg', name: 'Meyo Wii', seatNo: 'G9' },
-    { regisNo: 'USR-B67890', facePhoto: '/images/stakeholder-melo.jpg', name: 'Me Lo', seatNo: 'G8' }
-];
+    labels1.forEach(label => { label.style.display = 'none'; });
+    labels2.forEach(label => { label.style.display = 'none'; });
+    btn1.style.display = 'none';
+
+    initializeShowcase.style.display = 'none';
+    initializeSidepageSummary.innerHTML = `
+        <div>
+            <label>Available Seats:</label><label class="availableSeats"></label>
+        </div>
+        <div>
+            <label>Total Seats:</label><label class="totalSeats"></label> 
+        </div>
+    `
+}
 
 
 // (Occupied Seats) Variables:
@@ -289,5 +333,4 @@ function toggleDropdown() {
         title.innerHTML = 'Seating Information ▼';
     }
 }
-
 
