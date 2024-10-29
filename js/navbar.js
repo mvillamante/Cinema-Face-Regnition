@@ -6,8 +6,8 @@ initializeNavbar.innerHTML = `
     <a href="index.html" class="logo">CineBio</a>
     <ul class="nav">
         <li><a href="index.html">Home</a></li>
-        <li><a href="movies.html">Movies</a></li>
-        <li><a href="bookings.html">Bookings</a></li>
+        <li><a href="movie-viewer.html">Movies</a></li>
+        <li><a href="movie-booking.html">Bookings</a></li>
         <li><a href="#">Profile</a></li>
         <li><a href="#">About Us</a></li>
     </ul>

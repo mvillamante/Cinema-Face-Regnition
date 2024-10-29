@@ -49,10 +49,10 @@ initializeShowcase.innerHTML = `
 
 // DUMMY DATA FOR TABLE
 const registeredSeatsData = [
-    { regisNo: 'A12345', facePhoto: '/images/stakeholder-melo.jpg', name: 'Mewo Lee', seatNo: 'G11' },
-    { regisNo: 'B67890', facePhoto: '/images/stakeholder-melo.jpg', name: 'Meo Ling', seatNo: 'G10' },
-    { regisNo: 'A12345', facePhoto: '/images/stakeholder-melo.jpg', name: 'Meyo Wii', seatNo: 'G9' },
-    { regisNo: 'B67890', facePhoto: '/images/stakeholder-melo.jpg', name: 'Me Lo', seatNo: 'G8' }
+    { regisNo: 'USR-A12345', facePhoto: '/images/stakeholder-melo.jpg', name: 'Mewo Lee', seatNo: 'G11' },
+    { regisNo: 'USR-B67890', facePhoto: '/images/stakeholder-melo.jpg', name: 'Meo Ling', seatNo: 'G10' },
+    { regisNo: 'USR-A12345', facePhoto: '/images/stakeholder-melo.jpg', name: 'Meyo Wii', seatNo: 'G9' },
+    { regisNo: 'USR-B67890', facePhoto: '/images/stakeholder-melo.jpg', name: 'Me Lo', seatNo: 'G8' }
 ];
 
 

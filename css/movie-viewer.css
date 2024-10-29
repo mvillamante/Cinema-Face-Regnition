@@ -86,11 +86,24 @@ body {
 .cinema-seating .showcase li {
     display: flex; 
     align-items: center; 
-    margin: 0 10px;
+    margin: 0 80px;
+    font-size: 20px;
 }
 
 .cinema-seating .showcase li small {
     margin-left: 10px;
+}
+
+/*Movie Image Container*/
+.movieimg-container{
+    height: 25%;
+    overflow: hidden;
+}
+
+.movieimg-container img{
+    width: 100%;
+    object-fit:cover;
+    object-position: top;
 }
 
 /*Side Page===============================*/
@@ -186,13 +199,13 @@ body {
 }
 
 
-
 .cinema-container {
     display: fixed;
     justify-content: center;
     align-items: center;
     margin: auto 25px;
-    padding: 20px;
+    padding: auto 20px;
+    width: 780px;
 }
 
 /*Cinema Details ====================================*/
@@ -212,10 +225,17 @@ body {
     align-items: center;
 }
 
+.selectedSeats, .availableSeats, .totalSeats{
+    color: var(--light-text-color);
+}
+
 .cinema-details .cinema-content label {
     margin: 0 20px 5px 20px;
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 15px;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
