@@ -53,6 +53,7 @@ body, html {
     border-radius: 10px;
     transition: background-color 0.3s ease;
     font-size: 13px;
+    cursor: pointer;
 }
 
 .seatCon[data-seat-status="Free"] {
@@ -72,6 +73,11 @@ body, html {
 
 .seatCon[data-seat-status="Free"]:hover {
     background-color: var(--seat-hover-color);
+}
+
+.disabled-seat {
+    pointer-events: none;
+    opacity: 0.5; 
 }
 
 .highlight {

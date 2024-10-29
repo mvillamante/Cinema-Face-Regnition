@@ -20,11 +20,20 @@
                     <div class="timeslot active">2:30pm-4:10pm</div>
                     <div class="timeslot">5:20pm-7:00pm</div>
                 </div>
+                <div>
+                    <label class="sidepage-margin-text">Date:</label>
+                    <select class="date-select" id="date-select">
+                        <option value="2024-10-29">October 29, 2024</option>
+                        <option value="2024-10-30">October 30, 2024</option>
+                        <option value="2024-10-31">October 31, 2024</option>
+                        <option value="2024-11-01">November 1, 2024</option>
+                    </select>
+                </div>
                 <div class="sidepage-summary"></div>
                 <label class="sidepage-margin-text">Selected Seats (<label class="selectedSeats">0</label>):</label>
                 <div class="sidepage-center-text" id="selectedSeatDisplay">None</div>
                 <label class="sidepage-margin-text">Price:</label>
-                <div class="sidepage-center-text">₱0.00</div>
+                <div class="sidepage-center-text price-textcontent">₱0.00</div>
             </div>
             <!--<label class="generatedNumber">testing</label>-->
             <button class="btnSeats" onclick="executeSubmit()">Book Seats</button>
@@ -81,6 +90,6 @@
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/navbar.js"></script>
-    <script src="js/seatings.js"></script>
+    <script src="js/movie-viewer.js"></script>
     <script src="js/payment.js"></script>
 </html>
