@@ -6,160 +6,97 @@
         <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
         <link rel="stylesheet" href="./css/main.css" />
-        <title>CineBio Website</title>
+        <title>CineBio Login</title>
     </head>
+
     <body>
-        <!--Display Navigation Bar-->
-        <div class="NavBarContainer"></div>
-
-        <div class="banner">
-            <div class="content active">
-                <img 
-                src="./images/movies/inside-out-2-title.png" 
-                alt="" 
-                class="movie-title"
-                />
-                <h6>
-                    <span>2024</span><span><i>R</i></span>
-                    <span>1h 36m</span><span>Animation</span>
-                </h6>
-                <p>
-                    Joy, Sadness, Anger, Fear and Disgust have been running a successful operation by all accounts. However, when Anxiety shows up, they aren't sure how to feel.
-                </p>
-                <div class="button">
-                    <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> Book</a>
-                    <a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>></i> Login</a>
-                </div>
-
-            </div>
-            <div class="content inside-out-2">
-                <img 
-                src="./images/movies/inside-out-2-title.png" 
-                alt="" 
-                class="movie-title"
-                />
-                <h6>
-                    <span>2024</span><span><i>R</i></span>
-                    <span>1h 36m</span><span>Animation</span>
-                </h6>
-                <p>
-                    Joy, Sadness, Anger, Fear and Disgust have been running a successful operation by all accounts. However, when Anxiety shows up, they aren't sure how to feel.
-                </p>
-                <div class="button">
-                    <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> Book</a>
-                    <a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>></i> Login</a>
-                </div>
-
-            </div>
-            <div class="content deadpool-and-wolverine">
-                <img 
-                src="./images/movies/deadpool-and-wolverine-title.png" 
-                alt="" 
-                class="movie-title"
-                />
-                <h6>
-                    <span>2024</span><span><i>R</i></span>
-                    <span>2h 8m</span><span>Action</span>
-                </h6>
-                <p>
-                    Deadpool's peaceful existence comes crashing down when the Time Variance Authority recruits him to help safeguard the multiverse. He soon unites with his would-be pal, Wolverine, to complete the mission and save his world from an existential threat.
-                </p>
-                <div class="button">
-                    <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> Book</a>
-                    <a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>></i> Login</a>
-                </div>
-            </div>
-            <div class="content despicable-me-4">
-                <img 
-                src="./images/movies/despicable-me-4-title.png" 
-                alt="" 
-                class="movie-title"
-                />
-                <h6>
-                    <span>2024</span><span><i>PG</i></span>
-                    <span>1h 34m</span><span>Animation</span>
-                </h6>
-                <p>
-                    Gru welcomes a new member to the family, Gru Jr., who's intent on tormenting his dad. However, their peaceful existence soon comes crashing down when criminal mastermind Maxime Le Mal escapes from prison and vows revenge against Gru.
-                </p>
-                <div class="button">
-                    <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> Book</a>
-                    <a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>></i> Login</a>
-                </div>
-            </div>
-            <div class="content smile-2">
-                <img 
-                src="./images/movies/smile-2-title.png" 
-                alt="" 
-                class="movie-title"
-                />
-                <h6>
-                    <span>2024</span><span><i>R</i></span>
-                    <span>2h 7m</span><span>Horror</span>
-                </h6>
-                <p>
-                    About to embark on a new world tour, global pop sensation Skye Riley begins to experience increasingly terrifying and inexplicable events. Overwhelmed by the escalating horrors and pressures of fame, she must face her dark past to regain control of her life before it spirals out of control.
-                </p>
-                <div class="button">
-                    <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> Book</a>
-                    <a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>></i> Login</a>
-                </div>
-            </div>
-            <div class="content anyone-but-you">
-                <img 
-                src="./images/movies/anyone-but-you-title.png" 
-                alt="" 
-                class="movie-title"
-                />
-                <h6>
-                    <span>2024</span><span><i>R</i></span>
-                    <span>1h 43m</span><span>Romance</span>
-                </h6>
-                <p>
-                    Despite having an amazing first date, Bea and Ben's initial attraction quickly turns sour. When they unexpectedly find themselves at a destination wedding in Australia, the pair pretend to be the perfect couple to keep up appearances.
-                </p>
-                <div class="button">
-                    <a href="#"><i class="fa fa-ticket" aria-hidden="true"></i> Book</a>
-                    <a href="#"><i class="fa fa-plus" aria-hidden="true"></i> My List</a>
-                </div>
-            </div>
-            <div class="carousel-box">
-                <div class="carousel">
-                    <div class="carousel-item" onClick="changeBg('inside-out-2.png', 'inside-out-2');">
-                        <img src="images\movies\inside-out-2-poster.jfif">
+        <main class="login-container">
+            <div class="box">
+                <div class="inner-box">
+                    <div class="forms-wrap">
+                        <form action="index.html" autocomplete="off" class="sign-in-form">
+                            <div class="logo">
+                                <img src="./images/birb.jpeg" id="logo-img" alt="cinebio">
+                                <h4>CineBio</h4>
+                            </div>
+    
+                            <div class="heading">
+                                <h2>Welcome Back</h2>
+                                <h6>Not registered yet?</h6>
+                                <a href="#" class="toggle">Sign Up</a>
+                            </div>
+    
+                            <div class="actual-form">
+                                <div class="input-wrap">
+                                    <input id="usernameInput" type="text" minlength="4" class="input-field" autocomplete="off" required />
+                                    <label>Username</label>
+                                </div>
+    
+                                <div class="input-wrap">
+                                    <input id="passwordInput" type="password" minlength="4" class="input-field" autocomplete="off" required />
+                                    <label>Password</label>
+                                </div>
+    
+                                <input type="submit" value="Sign In" class="sign-btn" />
+    
+                            </div>
+                        </form>
+    
+                        <form action="index.html" autocomplete="off" class="sign-up-form">
+                            <div class="logo">
+                                <img src="./images/birb.jpeg" id="logo-img" alt="cinebio">
+                                <h4>CineBio</h4>
+                            </div>
+    
+                            <div class="heading">
+                                <h2>Get Started</h2>
+                                <h6>Already have an account?</h6>
+                                <a href="#" class="toggle">Login</a>
+                            </div>
+    
+                            <div class="actual-form">
+                                <div class="input-wrap">
+                                    <input type="text" id="signUpUsername" minlength="4" class="input-field" autocomplete="off" required />
+                                    <label>Username</label>
+                                </div>
+    
+                                <div class="input-wrap">
+                                    <input type="password" id="signUpPassword" minlength="4" class="input-field" autocomplete="off" required />
+                                    <label>Password</label>
+                                </div>
+    
+                                <input type="submit" value="Sign Up" class="sign-btn" />
+    
+                            </div>
+                        </form>
                     </div>
-                    <div class="carousel-item" onClick="changeBg('deadpool-and-wolverine.png', 'deadpool-and-wolverine');"
-                    > 
-                        <img src="images\movies\deadpool-and-wolverine-poster.png">
-                    </div>
-                    <div class="carousel-item" onClick="changeBg('despicable-me-4.png', 'despicable-me-4');"> 
-                        <img src="images\movies\despicable-me-4-poster.jfif">
-                    </div>
-                    <div class="carousel-item" onClick="changeBg('smile-2.avif', 'smile-2')">
-                        <img src="images\movies\smile-2-poster.jpg">
-                    </div>
-                    <div class="carousel-item" onClick="changeBg('anyone-but-you.jpg', 'anyone-but-you')"> 
-                        <img src="images\movies\anyone-but-you-poster.jpg">
+    
+                    <div class="login-carousel">
+                        <div class="images-wrapper">
+                          <img src="./images/1.png" class="image img-1 show" alt="" />
+                          <img src="./images/2.png" class="image img-2" alt="" />
+                          <img src="./images/3.png" class="image img-3" alt="" />
+                        </div>
+    
+                        <div class="text-slider">
+                            <div class="text-wrap">
+                                <div class="text-group">
+                                    <h2>Skip the lines and enjoy the movie!</h2>
+                                    <h2>Watch more and wait less!</h2>
+                                    <h2>Seamless check-in everytime!</h2>
+                                </div>
+                            </div>
+    
+                            <div class="bullets">
+                                <span class="active" data-value="1"></span>
+                                <span data-value="2"></span>
+                                <span data-value="3"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-            <a href="#" class="play"><i class="fa fa-play-circle-o" aria-hidden="true"></i> Watch Trailer</a> 
-        </div>
-        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script src="/js/script.js"></script>
-        <script>            
-            $(document).ready(function(){
-                $('.carousel').carousel();
-            });     
-        </script>
-            <footer class="page-footer">
-                <div class="container">
-                    <p class="center-align">© 2024 CineBio. All rights reserved.</p>
-                </div>
-            </footer>
+        </main>
+        <script src="js/login.js"></script>
     </body>
-    <script src="js/navbar.js"></script>
 </html>
