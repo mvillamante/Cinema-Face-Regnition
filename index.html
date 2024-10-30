@@ -14,9 +14,9 @@
             <div class="box">
                 <div class="inner-box">
                     <div class="forms-wrap">
-                        <form action="index.html" autocomplete="off" class="sign-in-form">
+                        <form id="signInForm" autocomplete="off" class="sign-in-form" onsubmit="signIn(event)">
                             <div class="logo">
-                                <img src="./images/birb.jpeg" id="logo-img" alt="cinebio">
+                                <!-- <img src="./images/birb.jpeg" id="logo-img" alt="cinebio"> -->
                                 <h4>CineBio</h4>
                             </div>
     
@@ -28,12 +28,12 @@
     
                             <div class="actual-form">
                                 <div class="input-wrap">
-                                    <input id="usernameInput" type="text" minlength="4" class="input-field" autocomplete="off" required />
+                                    <input type="text" id="signInUsername" minlength="4" class="input-field" autocomplete="off" required />
                                     <label>Username</label>
                                 </div>
     
                                 <div class="input-wrap">
-                                    <input id="passwordInput" type="password" minlength="4" class="input-field" autocomplete="off" required />
+                                    <input type="password" id="signInPassword" minlength="4" class="input-field" autocomplete="off" required />
                                     <label>Password</label>
                                 </div>
     
@@ -42,7 +42,7 @@
                             </div>
                         </form>
     
-                        <form action="index.html" autocomplete="off" class="sign-up-form">
+                        <form id="signUpForm" autocomplete="off" class="sign-up-form" onsubmit="signUp(event)">
                             <div class="logo">
                                 <img src="./images/birb.jpeg" id="logo-img" alt="cinebio">
                                 <h4>CineBio</h4>
@@ -65,7 +65,7 @@
                                     <label>Password</label>
                                 </div>
     
-                                <input type="submit" value="Sign Up" class="sign-btn" />
+                                <input type="submit" value="Sign Up" class="sign-btn"/>
     
                             </div>
                         </form>
@@ -98,5 +98,6 @@
             </div>
         </main>
         <script src="js/login.js"></script>
+        <script src="js\script.js"></script>
     </body>
 </html>

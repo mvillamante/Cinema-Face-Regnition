@@ -358,10 +358,10 @@ form.sign-up-form {
 }
 
 .logo h4 {
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: -0.5px;
-    color: #ff3700;
+    font-size: 40px;
+    color: #e50914;
+    letter-spacing: 1px;
+    font-weight: 800;
 }
 
 .heading h2 {
