@@ -443,6 +443,10 @@ label {
     font-size: 0.8rem;
     margin-bottom: 2rem;
     transition: 0.3s;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sign-btn:hover {
@@ -654,5 +658,148 @@ main.sign-up-mode .login-carousel {
 
     form{
         padding: 1rem 2rem 1.5rem;
+    }
+}
+
+/* More Info page */
+main.moreInfo-container {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #202124;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.moreInfo-wrap {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    transition: 0.8s ease-in-out;
+}
+
+.moreInfo-wrap {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    transition: 0.8s ease-in-out;
+}
+
+.moreInput-wrap{
+    position: relative;
+    height: 37px;
+    margin-bottom: 2rem;
+}
+
+.moreInfo-form{
+    width: 100%;
+}
+
+.input-field {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #ffffff;
+    padding: 0;
+    font-size: 0.95rem;
+    color: #202124; 
+    transition: 0.4s;
+}
+
+.moreInfo-box {
+    position: relative;
+    width: 100%;
+    max-width: 1020px;
+    height: 640px;
+    background-color: #ffffff;
+    border-radius: 3.3rem;
+    box-shadow: 0 60px 40px -30px rgba(255, 255, 255, 0.27);
+    
+}
+
+.signUp-btn {
+    display: inline-block;
+    width: 100%;
+    height: 43px;
+    background-color: #202124; 
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+    transition: 0.3s;
+    line-height: 43px; 
+    text-decoration: none; 
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.signUp-btn:hover {
+    background-color: #ff3700;
+}
+
+.moreInfo-heading h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #202124; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.moreInfo-logo h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: #ff3700;
+    margin-bottom: -40px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+@media (max-width: 850px){
+    .moreInfo-box {
+        position: relative;
+        width: 150%;
+        max-width: 1020px;
+        height: 640px;
+        background-color: #ffffff;
+        border-radius: 3.3rem;
+        box-shadow: 0 60px 40px -30px rgba(255, 255, 255, 0.27);
+    }
+
+}
+
+@media (max-width: 530px){
+    .moreInfo-box {
+        position: relative;
+        width: 80%;
+        max-width: 1020px;
+        height: 640px;
+        background-color: #ffffff;
+        border-radius: 3.3rem;
+        box-shadow: 0 60px 40px -30px rgba(255, 255, 255, 0.27);
     }
 }
