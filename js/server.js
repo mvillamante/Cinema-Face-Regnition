@@ -89,6 +89,36 @@ app.post('/auth/signin', async (req, res) => {
     }
 });
 
+// save user info API
+app.post('/api/saveUser', async (req, res) => {
+    const { username, firstName, lastName, email, cellphoneNum } = req.body;
+
+    const fullName = `${firstName} ${lastName}`;
+    let connection;
+    try {
+        connection = await oracledb.getConnection({
+            user: 'SYSTEM',
+            password: 'admin',
+            connectString: 'localhost/XEPDB1'
+        });
+
+        const result = await connection.execute(
+        'INSERT INTO UserInfo (username, FullName, Email, CellNo) VALUES (:username, :fullName, :email, :cellphoneNum)',
+                [username, fullName, email, cellphoneNum],
+                { autocommit: true }
+            );
+        await connection.commit();
+        res.status(201).send('User information saved successfully!');
+
+    } catch (err) {
+        res.status(500).send('An error occurred while saving the user.');
+        console.error(err);
+    } finally {
+        if (connection) await connection.close();
+    }
+}); 
+
+
 app.listen(3000, () => {
     console.log('Server running on http://localhost:3000');
 });

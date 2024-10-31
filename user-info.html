@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -8,12 +7,11 @@
         <link rel="stylesheet" href="./css/main.css" />
         <title>CineBio Login</title>
     </head>
-
     <body>
         <main class="moreInfo-container">
             <div class="moreInfo-box">
                     <div class="moreInfo-wrap">
-                        <form id="index.html" autocomplete="off" class="sign-in-form">
+                        <form id="user-form" autocomplete="off" class="user-form" onsubmit="saveUser(event)">
                             <div class="moreInfo-logo">
                                 <!-- <img src="./images/birb.jpeg" id="logo-img" alt="cinebio"> -->
                                 <h4>CineBio</h4>
@@ -38,12 +36,10 @@
                                     <input id="email" type="text" minlength="4" class="input-field" autocomplete="off" required />
                                     <label>Email Address</label>
                                 </div>
-
                                 <div class="moreInput-wrap">
                                     <input id="cellphoneNum" type="text" minlength="4" class="input-field" autocomplete="off" required />
                                     <label>Cellphone Number</label>
                                 </div>
-
                                 <input type="submit" value="Submit" class="signUp-btn" />
     
                             </div>
@@ -53,5 +49,6 @@
             </div>
         </main>
         <script src="js/signup.js"></script>
+        <script src="js/script.js"></script>
     </body>
 </html>

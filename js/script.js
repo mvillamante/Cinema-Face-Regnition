@@ -4,12 +4,18 @@ async function signUp(event) {
 
     const username = document.getElementById('signUpUsername').value;
     const password = document.getElementById('signUpPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
 
     const passwordRegEx = /^(?=.*[A-Z])(?=.*\d)(?=.*[a-zA-Z]).{8,}$/;
 
     //password validation
     if (!passwordRegEx.test(password)) {
         alert('Password must contain at least one uppercase letter, one number, and be at least 8 characters long.');
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert('Password does not match.');
         return;
     }
 
@@ -34,8 +40,11 @@ async function signUp(event) {
         if (!res.ok) {
             alert(result)
         } else {
-            //papalitan ng function na pagswitch sa 2nd form
-            window.location.href = 'homepage.html';
+            alert(result);
+            localStorage.setItem('currentUser', username);
+            setTimeout(() => {
+                window.location.href = 'user-info.html';
+            }, 500); 
         }
     } catch (err) {
         console.error(err);
@@ -65,6 +74,7 @@ async function signIn(event) {
             alert(result)
         } else {
             alert(result);
+            localStorage.setItem('currentUser', username);
             window.location.href = 'homepage.html';
         }
     } catch (err) {
@@ -73,6 +83,30 @@ async function signIn(event) {
     }
 }
 
+// save user info
+async function saveUser(event) {
+    event.preventDefault();
 
+    const username = localStorage.getItem('currentUser');
+    const firstName = document.getElementById('firstName').value;
+    const lastName = document.getElementById('lastName').value;
+    const email = document.getElementById('email').value;
+    const cellphoneNum = document.getElementById('cellphoneNum').value;
 
+    try {
+        const res = await fetch('http://localhost:3000/api/saveUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, firstName, lastName, email, cellphoneNum })
+        });
+
+        const result = await res.text();
+        alert(result);
+    } catch (err) {
+        console.error('Error saving user:', err);
+        alert('An error occurred while saving the user.');
+    }
+}
     
