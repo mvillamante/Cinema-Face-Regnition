@@ -11,6 +11,7 @@ if (accountType === 'user') {
         <a href="index.html" class="logo">CineBio</a>
         <ul class="nav">
             <li><a href="homepage.html">Home</a></li>
+            <li><a href="">Movies</a></li>
             <li><a href="movie-booking.html">Bookings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">About Us</a></li>
@@ -27,7 +28,6 @@ if (accountType === 'user') {
         <link rel="stylesheet" href="css/navbar.css">
         <a href="index.html" class="logo">CineBio</a>
         <ul class="nav">
-            <li><a href="index.html">Home</a></li>
             <li><a href="movie-booking.html">Movies</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">About Us</a></li>

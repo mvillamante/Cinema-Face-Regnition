@@ -131,6 +131,7 @@ body {
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 10px;
+    color: var(--light-text-color);
 }
 
 
@@ -156,14 +157,14 @@ body {
     color: var(--light-text-color);
 }
 
-.sidepage-text, .sidepage-margin-text{
+.sidepage-text, .sidepage-margin-text, .sidepage-text2{
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 10px;
     display: inline-block;
 }
 
-.sidepage-margin-text{
+.sidepage-margin-text, .sidepage-text2{
     margin-top: 25px;
 }
 
@@ -330,13 +331,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px auto 0 auto;
+    margin: 45px auto 10px auto;
     padding: 10px;
     border: none;
     border-radius: 65px;
     width: 85%;
     color: var(--light-text-color);
     background-color: var(--btn-color-1);
+    font-weight: 700;
 }
 
 .btnSeats:hover {
