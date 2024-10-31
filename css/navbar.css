@@ -157,3 +157,8 @@ header {
 .user-greeting .dropdown button:hover {
     background-color: var(--primary);
 }
+
+/*FOOTER*/
+.page-footer {
+    background-color: #000000;
+}
