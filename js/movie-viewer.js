@@ -7,15 +7,7 @@ const registeredSeatsData = [
 ]; 
 
 // CHECK IF THE ACCOUNT IS USER OR ADMIN (temporary)
-var currentAccountNo = 'USR-0001';
-//var currentAccountNo = 'ADM-0001';
-
-// Function to check the account type (admin or user)
-function checkAccountType(currentAccountNo) {
-    return currentAccountNo.startsWith('ADM') ? 'admin' : 'user';
-}
-var accountType = checkAccountType(currentAccountNo);
-
+var accountType = localStorage.getItem('accountType');
 
 //Seating Arrangement
 var initializeSeats = document.querySelector(".DivisionContainer");

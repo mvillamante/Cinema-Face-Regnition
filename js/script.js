@@ -1,3 +1,25 @@
+// switch to homepage
+function switchToHomePage() {
+
+    const username = localStorage.getItem('currentUser');
+    const adminPattern = /^admin-\d+$/;
+    let accountType;
+
+    if (username && adminPattern.test(username.toLowerCase())) {
+        accountType = 'admin';
+    } else {
+        accountType = 'user';
+    }
+
+    localStorage.setItem('accountType', accountType);
+
+    if (accountType === 'user') {
+        window.location.href = 'homepage.html';
+    } else if (accountType === 'admin') {
+        window.location.href = 'movie-booking.html';
+    }
+}
+
 //signup function
 async function signUp(event) {
     event.preventDefault();
@@ -43,7 +65,7 @@ async function signUp(event) {
             alert(result);
             localStorage.setItem('currentUser', username);
             setTimeout(() => {
-                window.location.href = 'user-info.html';
+                switchToHomePage();
             }, 500); 
         }
     } catch (err) {
@@ -75,7 +97,7 @@ async function signIn(event) {
         } else {
             alert(result);
             localStorage.setItem('currentUser', username);
-            window.location.href = 'homepage.html';
+            switchToHomePage();
         }
     } catch (err) {
         console.error(err);
@@ -101,7 +123,6 @@ async function saveUser(event) {
             },
             body: JSON.stringify({ username, firstName, lastName, email, cellphoneNum })
         });
-
         const result = await res.text();
         alert(result);
     } catch (err) {

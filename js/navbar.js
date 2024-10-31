@@ -1,5 +1,6 @@
 // CHECK IF THE ACCOUNT IS USER OR ADMIN (temporary)
-var accountType = 'user';
+var accountType = localStorage.getItem('accountType');
+var currentUser = localStorage.getItem('currentUser');
 
 var initializeNavbar = document.querySelector(".NavBarContainer");
 
@@ -58,9 +59,9 @@ function initializeAutocomplete() {
     }
 }
 
-function logout() {
-    window.location.href = 'index.html';
-}
+// function logout() {
+//     window.location.href = 'index.html';
+// }
 
 if (accountType === 'user') {
     initializeNavbar.innerHTML = `
@@ -72,7 +73,6 @@ if (accountType === 'user') {
             <li><a href="movie-booking.html" id="buyticket-link">Movies</a></li>
             <li><a href="movie-booking.html" id="remindMe-link">Bookings</a></li>
             <li><a href="profile.html">Profile</a></li>
-            <li><a href="#">About Us</a></li>
         </ul>
         <div class="search">
             <input type="text" id="input-box" placeholder="Search" autocomplete="off">
@@ -80,7 +80,7 @@ if (accountType === 'user') {
             <div class="result-box"></div>
         </div>
         <div class="user-greeting">
-            <span>Greetings! User</span><i class="fa fa-chevron-down" aria-hidden="true"></i>
+            <span id="username-display">Greetings, ${currentUser}!</span><i class="fa fa-chevron-down" aria-hidden="true"></i>
         <div class="dropdown">
             <button onclick="logout()">Logout</button>
         </div>
@@ -88,15 +88,14 @@ if (accountType === 'user') {
     </div>
     </header>
     `;
+
 } else if (accountType === 'admin') {
     initializeNavbar.innerHTML = `
     <header>
         <link rel="stylesheet" href="css/navbar.css">
         <a href="index.html" class="logo">CineBio</a>
         <ul class="nav">
-            <li><a href="movie-booking.html">Movies</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">About Us</a></li>
+        <li><a href="#">About Us</a></li>
         </ul>
         <div class="search">
             <input type="text" id="input-box" placeholder="Search" autocomplete="off">
@@ -104,14 +103,23 @@ if (accountType === 'user') {
             <div class="result-box"></div>
         </div>
         <div class="user-greeting">
-            <span>Greetings! Admin</span><i class="fa fa-chevron-down" aria-hidden="true"></i>
+            <span id="username-display">Greetings, ${currentUser}!</span><i class="fa fa-chevron-down" aria-hidden="true"></i>
         <div class="dropdown">
             <button onclick="logout()">Logout</button>
         </div>
         </div>
     </header>
     `;
+    
+    console.log(currentUser);
 }
+
+// function displayUsername() {
+//     var username = localStorage.getItem('username');
+
+//     var usernameDisplay = document.querySelector("#username-display");
+//     usernameDisplay.textContent = username;
+// }
 
 // Initialize autocomplete after injecting navbar content
 initializeAutocomplete();

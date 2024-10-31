@@ -1,5 +1,5 @@
 // CHECK IF THE ACCOUNT IS USER OR ADMIN (temporary)
-var accountType = 'user';
+var accountType = localStorage.getItem('accountType');
 
 
 // Movie Links
