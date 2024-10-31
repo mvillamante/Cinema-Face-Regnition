@@ -1,6 +1,5 @@
 // CHECK IF THE ACCOUNT IS USER OR ADMIN (temporary)
 var accountType = 'user';
-// const accountType = 'admin';
 
 var initializeNavbar = document.querySelector(".NavBarContainer");
 
@@ -70,7 +69,8 @@ if (accountType === 'user') {
         <a href="index.html" class="logo">CineBio</a>
         <ul class="nav">
             <li><a href="homepage.html">Home</a></li>
-            <li><a href="movie-booking.html">Bookings</a></li>
+            <li><a href="movie-booking.html" id="buyticket-link">Movies</a></li>
+            <li><a href="movie-booking.html" id="remindMe-link">Bookings</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">About Us</a></li>
         </ul>
@@ -94,7 +94,6 @@ if (accountType === 'user') {
         <link rel="stylesheet" href="css/navbar.css">
         <a href="index.html" class="logo">CineBio</a>
         <ul class="nav">
-            <li><a href="index.html">Home</a></li>
             <li><a href="movie-booking.html">Movies</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">About Us</a></li>
