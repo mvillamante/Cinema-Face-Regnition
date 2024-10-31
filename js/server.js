@@ -6,7 +6,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'http://XXX.XXX.XXX.XXX:5500' /*Change this to your local IP address*/
+    origin: 'http://192.168.18.95:5500' /*Change this to your local IP address*/
 }));
 
 
@@ -32,8 +32,7 @@ app.post('/auth/signup', async(req, res) => {
         } else {
             await connection.execute(
                 'INSERT INTO UserAccount (Username, Password) VALUES (:username, :password)',
-                [username, password],
-                { autocommit: true }
+                [username, password]
             );
             await connection.commit();
             res.status(200).send('Sign up successful!');
@@ -104,8 +103,7 @@ app.post('/api/saveUser', async (req, res) => {
 
         const result = await connection.execute(
         'INSERT INTO UserInfo (username, FullName, Email, CellNo) VALUES (:username, :fullName, :email, :cellphoneNum)',
-                [username, fullName, email, cellphoneNum],
-                { autocommit: true }
+                [username, fullName, email, cellphoneNum]
             );
         await connection.commit();
         res.status(201).send('User information saved successfully!');
