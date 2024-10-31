@@ -109,4 +109,3 @@ async function saveUser(event) {
         alert('An error occurred while saving the user.');
     }
 }
-    

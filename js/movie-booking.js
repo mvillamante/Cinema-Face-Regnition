@@ -60,10 +60,7 @@ initializeCardAction.forEach(cardAction => {
 
     } else if (accountType === 'admin') {
         cardAction.innerHTML = `
-            <a href="#" class="btn-small red-color"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;&nbsp;Manage Movies</a>            
+            <a href="#" class="btn-small red-color"><i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;&nbsp;Buy Tickets</a>            
         `;
     }
 });
-
-
-

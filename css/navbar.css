@@ -23,6 +23,7 @@ header {
 
 .nav {
     display: flex;
+    gap: 24px;
 }
 
 .nav li {
@@ -36,18 +37,53 @@ header {
     color: #ffffff;
     text-decoration: none;
     transition: color 0.3s;
-    font-weight: 500;
 }
 
 .nav li a:hover {
     color: var(--primary); 
 }
 
+.nav li:hover  {
+    color: var(--primary);
+}
 
 .search {
     position: relative;
     width: 300px;
     height: 40px;
+}
+
+::placeholder{
+    color: #555;
+}
+
+.result-box {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    background-size: 20px 20px;
+    background-repeat: no-repeat; 
+    background-position: center;
+    z-index: 10;
+    max-height: 150px; 
+    overflow-y: auto;
+}
+
+.result-box ul{
+    border: none;
+    padding: 10px 10px;
+}
+.result-box li{
+    list-style:none;
+    padding: 20px;
+    cursor: pointer; 
+    transition: background 0.3s;
+}
+
+.result-box ul li:hover{
+    background: #e50914;
 }
 
 .search input {
@@ -77,4 +113,47 @@ header {
     padding-right: 10px;
     color: #ffffff;
     border-right: 1px solid #ffffff;
+}
+
+.user-greeting {
+    position: relative;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.user-greeting span {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.user-greeting .dropdown {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #333;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 20;
+}
+
+.user-greeting:hover .dropdown {
+    display: block;
+}
+
+.user-greeting .dropdown button {
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    text-align: left;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.user-greeting .dropdown button:hover {
+    background-color: var(--primary);
 }
