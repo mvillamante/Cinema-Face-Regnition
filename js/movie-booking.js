@@ -89,6 +89,7 @@ function getMovieBookingsHTML() {
 }
 
 var initializeMainContainer = document.querySelector(".MainContainer");
+var initializeBookingsBanner = document.querySelector(".BookingsBannerCointainer");
 // Movies Interface (USER)
 if(accountType == 'user' ){
     // Initial Display
@@ -102,6 +103,12 @@ if(accountType == 'user' ){
     //If Bookings NavBar is clicked
     remindMeLink.addEventListener('click', function(event) {
         event.preventDefault(); // Prevent the default link behavior
+        initializeBookingsBanner.innerHTML = `
+        <div class="bookings-banner">
+            <h2 class="bookings-banner-title">Your Booking History</h2>
+            <p class="bookings-banner-description">View the details of your previous bookings below:</p>
+        </div>
+        `
         initializeMainContainer.innerHTML = `
             <div class="bookings-container">
                 <!-- Inside Out 2 Booking -->

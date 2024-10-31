@@ -392,16 +392,16 @@ function updatePrice(noOfSeats) {
 }
 
 // Toggle Active in Time Slot
-const timeslots = document.querySelectorAll('.timeslot');
-timeslots.forEach(slot => {
-    slot.addEventListener('click', function() {
-        // Remove 'active' class from all timeslots
-        timeslots.forEach(s => s.classList.remove('active'));
+// const timeslots = document.querySelectorAll('.timeslot');
+// timeslots.forEach(slot => {
+//     slot.addEventListener('click', function() {
+//         // Remove 'active' class from all timeslots
+//         timeslots.forEach(s => s.classList.remove('active'));
 
         // Add 'active' class to the clicked timeslot
-        this.classList.add('active');
-    });
-});
+//         this.classList.add('active');
+//     });
+// });
 
 // Update Seating Information Details (Admin)
 function updateSeatingTable(selectedDate, selectedTime) {
@@ -465,35 +465,6 @@ function toggleDropdown() {
     } else {
         title.innerHTML = 'Seating Information ▼';
     }
-}
-
-//PAYMENT (BOOK SEATS)
-function BookTickets(){
-    // Retrieving multiple items from localStorage
-    const userName = localStorage.getItem("userName"); // "Melo Lee"
-    const bookedSeats = localStorage.getItem("bookedSeats"); // "A1,A2,B1"
-    const bookingDate = localStorage.getItem("bookingDate"); // "2024-10-30"
-    const bookingTime = localStorage.getItem("bookingTime"); // "2:30pm-4:10pm"
-
-    let convertedTime = '';
-    //Change time text to its equivalent time format 
-    if(bookingTime == '2:30pm-4:10pm'){
-        convertedTime = '14:30:00';
-    } else if(bookingTime == '5:20pm-7:00pm'){
-        convertedTime = '17:20:00';
-    }
-    const bookingDateTime = `${bookingDate} ${convertedTime}`;
-
-    //gawa ka pop-up na ididisplay mga values na 'to
-    //irerekta na sa DB afterwards
-    // insert/update userName, bookedSeats, bookingDateTime
-
-    localStorage.setItem("userName", "John Doe");
-    localStorage.setItem("bookedSeats", seatList.join(','));
-    localStorage.setItem("bookingDate", "2024-10-30");
-    localStorage.setItem("bookingTime", "2:30pm-4:10pm");
-    //di pa nalalagay to sa mga dapat nilang pwesto ehehe
-
 }
 
 

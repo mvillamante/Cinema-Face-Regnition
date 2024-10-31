@@ -23,6 +23,7 @@
                 <div>
                     <label class="sidepage-text2">Date:</label>
                     <select class="date-select" id="date-select">
+                        <option value="" disabled selected>Select Date</option>
                         <option value="2024-10-29">October 29, 2024</option>
                         <option value="2024-10-30">October 30, 2024</option>
                         <option value="2024-10-31">October 31, 2024</option>
@@ -36,7 +37,7 @@
                 <div class="sidepage-center-text price-textcontent">₱0.00</div>
             </div>
             <!--<label class="generatedNumber">testing</label>-->
-            <button class="btnSeats" onclick="BookTickets()">Book Seats</button>
+            <button class="btnSeats" onclick="bookTickets(event)">Book Seats</button>
         </div>
         <div class="cinemabooking-page">
             <!--For Users Only-->
@@ -97,4 +98,5 @@
     <script src="js/navbar.js"></script>
     <script src="js/movie-viewer.js"></script>
     <script src="js/payment.js"></script>
+    <script src="js/script.js"></script>
 </html>

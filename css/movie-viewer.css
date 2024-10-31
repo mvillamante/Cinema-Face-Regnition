@@ -112,7 +112,7 @@ body {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 390px;
+    width: 340px;
     height: auto;
     display: flex;
     flex-direction: column;

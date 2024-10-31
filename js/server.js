@@ -6,7 +6,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'http://XXX.XXX.XXX.XXX/55500' /*Change this to your local IP address*/
+    origin: 'http://192.168.18.95:5500' /*Change this to your local IP address*/
 }));
 
 
@@ -115,6 +115,42 @@ app.post('/api/saveUser', async (req, res) => {
         if (connection) await connection.close();
     }
 }); 
+
+app.post('/api/bookTickets', async (req, res) => {
+    const { userName, selectedSeatList, bookingDateTime } = req.body;
+
+    let connection;
+
+
+    try {
+        connection = await oracledb.getConnection({
+            user: 'SYSTEM',
+            password: 'admin',
+            connectString: 'localhost/XEPDB1'
+        });
+
+        movieID = M00001;
+
+        console.log(username);
+        console.log(movieId);
+        console.log(seatNo);
+        console.log(dateTime);
+
+        const result = await connection.execute(
+            `INSERT INTO Booking (username, movieId, seatNo, dateTime) VALUES (:userName, :movieID, :selectedSeatList, :bookingDateTime)`,
+            [userName, movieID, selectedSeatList, bookingDateTime]
+        );
+
+        await connection.commit();
+        res.status(201).send('Booking successful!');
+    } catch (err) {
+        res.status(500).send('An error occurred while booking the tickets.');
+        console.error(err);
+    } finally {
+        if (connection) await connection.close();
+    }
+});
+
 
 
 app.listen(3000, () => {
