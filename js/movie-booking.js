@@ -133,7 +133,7 @@ if(accountType == 'user' ){
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image" id="choosecinema-link" style="cursor: pointer;">
-                        <img src="images/Cinema-CoverPhoto.jpg" alt="Cinema 1">
+                        <img src="images/cinema-coverphoto.jpeg" alt="Cinema 1">
                         <span class="card-title" style="font-weight: bold;">Cinema 1</span>
                     </div>
                 </div>
@@ -143,7 +143,7 @@ if(accountType == 'user' ){
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image" >
-                        <img src="images/Cinema-CoverPhoto.jpg" alt="Deadpool and Wolverine">
+                        <img src="images/cinema-coverphoto.jpeg" alt="Cinema 2">
                         <span class="card-title" style="font-weight: bold;">Cinema 2</span>
                     </div>
                 </div>
@@ -153,7 +153,7 @@ if(accountType == 'user' ){
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="images/Cinema-CoverPhoto.jpg" alt="Despicable Me 4">
+                        <img src="images/cinema-coverphoto.jpeg" alt="Cinema 3">
                         <span class="card-title" style="font-weight: bold;">Cinema 3</span>
                     </div>
                 </div>
@@ -163,7 +163,7 @@ if(accountType == 'user' ){
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
-                        <img src="images/Cinema-CoverPhoto.jpg" alt="Smile 2">
+                        <img src="images/cinema-coverphoto.jpeg" alt="Cinema 4">
                         <span class="card-title" style="font-weight: bold;">Cinema 4</span>
                     </div>
                 </div>

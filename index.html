@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
         <link rel="stylesheet" href="./css/main.css" />
         <title>CineBio Login</title>
     </head>
@@ -35,6 +36,7 @@
                                 <div class="input-wrap">
                                     <input type="password" id="signInPassword" minlength="4" class="input-field" autocomplete="off" required />
                                     <label>Password</label>
+                                    <i id="togglePassword" class="fa-solid fa-eye-slash"></i>
                                 </div>
     
                                 <input type="submit" value="Sign In" class="sign-btn" />
@@ -44,7 +46,7 @@
     
                         <form id="signUpForm" autocomplete="off" class="sign-up-form" onsubmit="signUp(event)">
                             <div class="logo">
-                                <img src="./images/birb.jpeg" id="logo-img" alt="cinebio">
+                                <!-- <img src="./images/birb.jpeg" id="logo-img" alt="cinebio"> -->
                                 <h4>CineBio</h4>
                             </div>
     
@@ -63,11 +65,13 @@
                                 <div class="input-wrap">
                                     <input type="password" id="signUpPassword" minlength="4" class="input-field" autocomplete="off" required />
                                     <label>Password</label>
+                                    <i id="toggleUpPassword" class="fa-solid fa-eye-slash"></i>
                                 </div>
 
                                 <div class="input-wrap">
                                     <input type="password" id="confirmPassword" minlength="4" class="input-field" autocomplete="off" required />
                                     <label>Confirm Password</label>
+                                    <i id="toggleConfirmPassword" class="fa-solid fa-eye-slash""></i>
                                 </div>
     
                                 <input type="submit" value="Sign Up" class="sign-btn"/>

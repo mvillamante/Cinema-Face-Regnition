@@ -71,7 +71,7 @@ if (accountType === 'user') {
             <li><a href="homepage.html">Home</a></li>
             <li><a href="movie-booking.html" id="buyticket-link">Movies</a></li>
             <li><a href="movie-booking.html" id="remindMe-link">Bookings</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="profile.html">Profile</a></li>
             <li><a href="#">About Us</a></li>
         </ul>
         <div class="search">
