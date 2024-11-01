@@ -1,4 +1,4 @@
-window.onload = viewProfile;
+
 
 // CHECK IF THE ACCOUNT IS USER OR ADMIN (temporary)
 var accountType = localStorage.getItem('accountType');
@@ -19,7 +19,7 @@ function initializeAutocomplete() {
     const inputBox = document.getElementById("input-box");
 
     if (inputBox && resultBox) {
-        inputBox.onkeyup = function() {
+        inputBox.onkeyup = function () {
             let result = [];
             let input = inputBox.value;
 
@@ -64,7 +64,7 @@ function initializeAutocomplete() {
 // log out function 
 function logOut() {
     localStorage.clear();
-    window.location.href='index.html';
+    window.location.href = 'index.html';
 }
 
 if (accountType === 'user') {
@@ -76,7 +76,7 @@ if (accountType === 'user') {
             <li><a href="homepage.html">Home</a></li>
             <li><a href="movie-booking.html" id="buyticket-link">Movies</a></li>
             <li><a href="movie-booking.html" id="remindMe-link">Bookings</a></li>
-            <li><a href="profile.html">Profile</a></li>
+            <li><a href="profile.html" onclick="sessionStorage.setItem('loadProfile', 'true')">Profile</a></li>
         </ul>
         <div class="search">
             <input type="text" id="input-box" placeholder="Search" autocomplete="off">
@@ -89,7 +89,6 @@ if (accountType === 'user') {
             <button onclick="logOut()">Logout</button>
         </div>
         </div>
-    </div>
     </header>
     `;
 
@@ -114,7 +113,7 @@ if (accountType === 'user') {
         </div>
     </header>
     `;
-    
+
     console.log(currentUser);
 }
 
@@ -129,7 +128,7 @@ if (accountType === 'user') {
 initializeAutocomplete();
 
 //profile function
-async function viewProfile(event) {
+async function viewProfile() {
     event.preventDefault();
     const username = localStorage.getItem('currentUser');
     const userName = document.getElementById('profile-uName');
@@ -150,7 +149,7 @@ async function viewProfile(event) {
 
         const fullName = response[2].split(' ');
         response.splice(2, 1, ...fullName);
-        
+
         userName.textContent = response[0];
         fName.textContent = response[2];
         lName.textContent = response[3];
@@ -162,3 +161,10 @@ async function viewProfile(event) {
         alert('An error occurred. Please try again later.');
     }
 }
+
+window.onload = function() {
+    if (sessionStorage.getItem('loadProfile') === 'true') {
+        viewProfile();
+        sessionStorage.removeItem('loadProfile'); // Clear the flag after loading
+    }
+};

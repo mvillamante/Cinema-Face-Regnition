@@ -6,7 +6,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'http://XXX.XXX.XXX.XXX:5500' /*Change this to your local IP address*/
+    origin: 'http://192.168.18.95:5500' /*Change this to your local IP address*/
 }));
 
 
