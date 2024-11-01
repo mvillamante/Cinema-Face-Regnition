@@ -1,4 +1,3 @@
-// CHECK IF THE ACCOUNT IS USER OR ADMIN (temporary)
 var accountType = localStorage.getItem('accountType');
 
 
@@ -89,7 +88,7 @@ function getMovieBookingsHTML() {
 }
 
 var initializeMainContainer = document.querySelector(".MainContainer");
-var initializeBookingsBanner = document.querySelector(".BookingsBannerCointainer");
+var initializeBookingBanner = document.querySelector(".BookingsBannerContainer");
 // Movies Interface (USER)
 if(accountType == 'user' ){
     // Initial Display
@@ -103,11 +102,11 @@ if(accountType == 'user' ){
     //If Bookings NavBar is clicked
     remindMeLink.addEventListener('click', function(event) {
         event.preventDefault(); // Prevent the default link behavior
-        initializeBookingsBanner.innerHTML = `
-        <div class="bookings-banner">
+        initializeBookingBanner.innerHTML = `
+            <div class="bookings-banner">
             <h2 class="bookings-banner-title">Your Booking History</h2>
             <p class="bookings-banner-description">View the details of your previous bookings below:</p>
-        </div>
+            </div>
         `
         initializeMainContainer.innerHTML = `
             <div class="bookings-container">
@@ -202,4 +201,3 @@ chooseCinemaLink.addEventListener('click', function(event) {
         </div>
     `
 });
-
