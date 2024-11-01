@@ -18,7 +18,7 @@ function getMovieBookingsHTML() {
                     </div>
                     <div class="card-action">
                         <a href="movie-viewer.html" class="btn-small red-color">
-                            <i class="fa-solid fa-ticket-simple" style="font-size: 14px;"></i>&nbsp;&nbsp;Buy Ticket
+                            <i class="fas fa-ticket-simple" style="font-size: 14px;"></i>&nbsp;&nbsp;Buy Ticket
                         </a>            
                     </div>
                 </div>
@@ -33,7 +33,7 @@ function getMovieBookingsHTML() {
                     </div>
                     <div class="card-action">
                         <a href="#" class="btn-small red-color" style="cursor: not-allowed;">
-                            <i class="fa-solid fa-ticket-simple" style="font-size: 14px;"></i>&nbsp;&nbsp;Buy Ticket
+                            <i class="fas fa-ticket-simple" style="font-size: 14px;"></i>&nbsp;&nbsp;Buy Ticket
                         </a>            
                     </div>
                 </div>
@@ -48,7 +48,7 @@ function getMovieBookingsHTML() {
                     </div>
                     <div class="card-action">
                         <a href="#" class="btn-small red-color" style="cursor: not-allowed;">
-                            <i class="fa-solid fa-ticket-simple" style="font-size: 14px;"></i>&nbsp;&nbsp;Buy Ticket
+                            <i class="fas fa-ticket-simple" style="font-size: 14px;"></i>&nbsp;&nbsp;Buy Ticket
                         </a>            
                     </div>
                 </div>
@@ -63,7 +63,7 @@ function getMovieBookingsHTML() {
                     </div>
                     <div class="card-action">
                         <a href="#" class="btn-small red-color" style="cursor: not-allowed;">
-                            <i class="fa-solid fa-ticket-simple" style="font-size: 14px;"></i>&nbsp;&nbsp;Buy Ticket
+                            <i class="fas fa-ticket-simple" style="font-size: 14px;"></i>&nbsp;&nbsp;Buy Ticket
                         </a>            
                     </div>
                 </div>
@@ -78,7 +78,7 @@ function getMovieBookingsHTML() {
                     </div>
                     <div class="card-action">
                         <a href="#" class="btn-small red-color" style="cursor: not-allowed;">
-                            <i class="fa-solid fa-ticket-simple" style="font-size: 14px;"></i>&nbsp;&nbsp;Buy Ticket
+                            <i class="fas fa-ticket-simple" style="font-size: 14px;"></i>&nbsp;&nbsp;Buy Ticket
                         </a>            
                     </div>
                 </div>
@@ -124,14 +124,14 @@ if(accountType == 'user' ){
                             <p><strong>Cinema:</strong> 1</p>
                         </div>
                         <div class="card-action">
-                            <a href="#" class="btn-small red-color"><i class="fa-regular fa-bell" style="font-size: 14px;"></i>&nbsp;&nbsp;Remind Me</a>            
+                            <a href="#" class="btn-small red-color"><i class="far fa-bell" style="font-size: 14px;"></i>&nbsp;&nbsp;Remind Me</a>            
                         </div>
                     </div>
                 </div>-->
             </div>
         `
     });
-} else if(accountType == 'admin'){ // Movies Interface (USER)
+} else if(accountType == 'admin'){ // Movies Interface (ADMIN)
     // Display Cinema Number Options
     initializeMainContainer.innerHTML = `
         <div class="bookings-container">
@@ -193,7 +193,7 @@ chooseCinemaLink.addEventListener('click', function(event) {
                         <span class="card-title">Inside Out 2</span>
                     </div>
                     <div class="card-action">
-                        <a href="movie-viewer.html" class="btn-small red-color"><i class="fa-solid fa-clapperboard"></i>
+                        <a href="movie-viewer.html" class="btn-small red-color"><i class="fas fa-clapperboard"></i>
 &nbsp;&nbsp;Manage Movie</a>            
                     </div>
                 </div>

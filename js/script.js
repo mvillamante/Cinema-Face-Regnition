@@ -98,6 +98,7 @@ async function signIn(event) {
         } else {
             alert(result);
             localStorage.setItem('currentUser', username);
+            switchToHomePage();
         }
     } catch (err) {
         console.error(err);
@@ -127,7 +128,6 @@ async function saveUser(event) {
         localStorage.setItem('firstName', firstName);
         localStorage.setItem('lastName', lastName);
         alert(result);
-
         window.location.href = 'homepage.html';
     } catch (err) {
         console.error('Error saving user:', err);

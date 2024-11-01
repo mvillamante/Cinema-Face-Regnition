@@ -59,9 +59,11 @@ function initializeAutocomplete() {
     }
 }
 
-// function logout() {
-//     window.location.href = 'index.html';
-// }
+// log out function 
+function logOut() {
+    localStorage.clear();
+    window.location.href='index.html';
+}
 
 if (accountType === 'user') {
     initializeNavbar.innerHTML = `
@@ -82,7 +84,7 @@ if (accountType === 'user') {
         <div class="user-greeting">
             <span id="username-display">Greetings, ${currentUser}!</span><i class="fa fa-chevron-down" aria-hidden="true"></i>
         <div class="dropdown">
-            <button onclick="logout()">Logout</button>
+            <button onclick="logOut()">Logout</button>
         </div>
         </div>
     </div>
@@ -105,7 +107,7 @@ if (accountType === 'user') {
         <div class="user-greeting">
             <span id="username-display">Greetings, ${currentUser}!</span><i class="fa fa-chevron-down" aria-hidden="true"></i>
         <div class="dropdown">
-            <button onclick="logout()">Logout</button>
+            <button onclick="logOut()">Logout</button>
         </div>
         </div>
     </header>

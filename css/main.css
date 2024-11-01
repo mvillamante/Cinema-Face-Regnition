@@ -272,7 +272,9 @@ main.login-container {
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
-    background-color: #202124;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/login_bg.jpg');
+    background-size: cover;
+    background-position: center;
     padding: 2rem;
     display: flex;
     align-items: center;
@@ -423,7 +425,7 @@ label {
     display: inline-block;
     width: 100%;
     height: 43px;
-    background-color: #202124; 
+    background-color: #e50914; 
     color: #ffffff;
     font-weight: 600;
     border: none;
