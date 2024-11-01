@@ -1,3 +1,5 @@
+window.onload = viewProfile;
+
 // CHECK IF THE ACCOUNT IS USER OR ADMIN (temporary)
 var accountType = localStorage.getItem('accountType');
 var currentUser = localStorage.getItem('currentUser');
@@ -125,3 +127,38 @@ if (accountType === 'user') {
 
 // Initialize autocomplete after injecting navbar content
 initializeAutocomplete();
+
+//profile function
+async function viewProfile(event) {
+    event.preventDefault();
+    const username = localStorage.getItem('currentUser');
+    const userName = document.getElementById('profile-uName');
+    const fName = document.getElementById('profile-fName');
+    const lName = document.getElementById('profile-lName');
+    const email = document.getElementById('profile-email');
+    const cellNo = document.getElementById('profile-cellNo');
+
+    try {
+        const res2 = await fetch('http://localhost:3000/api/retrieveInfo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username })
+        });
+        const response = await res2.json();
+
+        const fullName = response[2].split(' ');
+        response.splice(2, 1, ...fullName);
+        
+        userName.textContent = response[0];
+        fName.textContent = response[2];
+        lName.textContent = response[3];
+        email.textContent = response[1];
+        cellNo.textContent = response[4];
+
+    } catch (err) {
+        console.error(err);
+        alert('An error occurred. Please try again later.');
+    }
+}

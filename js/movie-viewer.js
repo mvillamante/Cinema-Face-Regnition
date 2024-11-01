@@ -391,18 +391,6 @@ function updatePrice(noOfSeats) {
     document.querySelector(".price-textcontent").innerHTML = formattedPrice;
 }
 
-// Toggle Active in Time Slot
-// const timeslots = document.querySelectorAll('.timeslot');
-// timeslots.forEach(slot => {
-//     slot.addEventListener('click', function() {
-//         // Remove 'active' class from all timeslots
-//         timeslots.forEach(s => s.classList.remove('active'));
-
-        // Add 'active' class to the clicked timeslot
-//         this.classList.add('active');
-//     });
-// });
-
 // Update Seating Information Details (Admin)
 function updateSeatingTable(selectedDate, selectedTime) {
     const takenSeats = extractTakenSeats(selectedDate, selectedTime);

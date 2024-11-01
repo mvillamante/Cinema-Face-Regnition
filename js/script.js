@@ -1,3 +1,5 @@
+
+
 // switch to homepage
 function switchToHomePage() {
 
@@ -55,9 +57,9 @@ async function signUp(event) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({username, password})
+            body: JSON.stringify({ username, password })
         });
-        
+
         const result = await res.text();
 
         if (!res.ok) {
@@ -67,7 +69,7 @@ async function signUp(event) {
             localStorage.setItem('currentUser', username);
             setTimeout(() => {
                 window.location.href = 'user-info.html';
-            }, 500); 
+            }, 500);
         }
     } catch (err) {
         console.error(err);
@@ -90,7 +92,7 @@ async function signIn(event) {
             },
             body: JSON.stringify({ username, password })
         });
-        
+
         const result = await res.text();
 
         if (!res.ok) {
@@ -125,111 +127,124 @@ async function saveUser(event) {
             body: JSON.stringify({ username, firstName, lastName, email, cellphoneNum })
         });
         const result = await res.text();
-        localStorage.setItem('firstName', firstName);
-        localStorage.setItem('lastName', lastName);
         alert(result);
-        window.location.href = 'homepage.html';
+        switchToHomePage();
     } catch (err) {
         console.error('Error saving user:', err);
         alert('An error occurred while saving the user.');
     }
 }
 
-
-
-// book a ticket function
-async function bookTickets(event) {
-    event.preventDefault();
+// handle timeslot
+function handleTimeslotClick(event) {
 
     const timeslots = document.querySelectorAll('.timeslot');
     let selectedTime; // Variable to store the selected time slot
 
     timeslots.forEach(slot => {
-    slot.addEventListener('click', function() {
-        // Remove 'active' class from all timeslots
-        timeslots.forEach(s => s.classList.remove('active'));
+        slot.addEventListener('click', function () {
+            // Remove 'active' class from all timeslots
+            timeslots.forEach(s => s.classList.remove('active'));
 
-        // Add 'active' class to the clicked timeslot
-        this.classList.add('active');
+            // Add 'active' class to the clicked timeslot
+            this.classList.add('active');
 
-        // Update the selectedTime variable with the clicked timeslot's text content
-        selectedTime = this.textContent;
+            // Update the selectedTime variable with the clicked timeslot's text content
+            selectedTime = this.textContent;
+        });
     });
-});
+}
 
-    let selectedSeatList;
+// book a ticket function
+async function bookTickets(event) {
+    event.preventDefault();
 
-    selectedSeatList = document.getElementById('selectedSeatDisplay').textContent.split(', ').filter(seat => seat !== 'None').join(', ');
-    const fName = localStorage.getItem('firstName');
-    const lName = localStorage.getItem('lastName');
+    const username = localStorage.getItem('currentUser');
+    let selectedSeatList = document.getElementById('selectedSeatDisplay').textContent.split(', ').filter(seat => seat !== 'None');
+    let fullName = '';
+    const movieId = "M00001";
     const selectedDate = document.getElementById('date-select').value;
-    const bookingtTime = selectedTime;
     const movieTitle = "Inside Out 2";
 
-    let convertedTime = '';
-    //Change time text to its equivalent time format 
-    if(bookingtTime == '2:30pm-4:10pm'){
-        convertedTime = '14:30:00';
-    } else if(bookingtTime == '5:20pm-7:00pm'){
-        convertedTime = '17:20:00';
-    }
-
-    console.log()
-
-    if (!selectedSeatList || !selectedDate) {
-        alert("Booking details are incomplete.");
-        return;
-    }
-
-    const bookingDateTime = `${selectedDate} ${convertedTime}`;
-    const fullName = `${fName} ${lName}`;
-
-    const confirmationMessage = `
-        Booking Confirmation:
-        ---------------------
-        Name: ${fullName}
-        Movie: ${movieTitle} 
-        Seats: ${selectedSeatList}
-        Date & Time: ${bookingDateTime}
-    `;
-
-    if (!confirm(confirmationMessage + "\n\nDo you want to proceed?")) {
-        return;
-    }
-
-    const bookingDetails = {
-        fullName,
-        movieTitle,
-        seats: selectedSeatList,
-        bookingDateTime
-    };
-
     try {
+        const res = await fetch('http://localhost:3000/api/retrieveFullName', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username })
+        });
+
+        if (res.ok) {
+            const data = await res.json();
+            fullName = data.join(' ');
+        } else {
+            const errorText = await res.text();
+            console.error('Error retrieving user:', errorText);
+            alert('An error occurred while retrieving the user.');
+            return;
+        }
+
+    } catch (err) {
+        console.error('Error retrieving user:', err);
+        alert('An error occurred while retrieving the user.');
+    }
+
+        let convertedTime = '';
+        //Change time text to its equivalent time format 
+        if (selectedTime == '2:30pm-4:10pm') {
+            convertedTime = '14:30:00';
+        } else if (selectedTime == '5:20pm-7:00pm') {
+            convertedTime = '17:20:00';
+        }
+
+        if (!selectedSeatList || !selectedDate) {
+            alert("Booking details are incomplete.");
+            return;
+        }
+
+        const bookingDateTime = `${selectedDate} ${convertedTime}`;
+
+        const confirmationMessage = `
+            Booking Confirmation:
+            ---------------------
+            Name: ${fullName}
+            Movie: ${movieTitle} 
+            Seats: ${selectedSeatList}
+            Date & Time: ${bookingDateTime}
+        `;
+
+        if (!confirm(confirmationMessage + "\n\nDo you want to proceed?")) {
+            return;
+    }
+    try {
+        const requestBody = {
+            username, 
+            movieId,
+            selectedSeats: selectedSeatList,
+            bookingDateTime
+        };
+
+        console.log(requestBody);
+
         const res = await fetch('http://localhost:3000/api/bookTickets', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(bookingDetails)
-    });
+            body: JSON.stringify(requestBody), // Use the defined body object here
+        });
 
-    console.log(bookingDetails);
-    
-    const result = await res.text();
-    if (!res.ok) {
-        alert(result);
+        if (res.ok) {
+            const result = await res.text();
+            alert(result);
+            window.location.href = 'movie-booking.html';
+        } else {
+            console.error('Error booking tickets:', await res.text());
+        }
+
+    } catch (err) {
+        console.error('Error booking tickets:', err);
+        alert('An error occurred while booking the tickets.');
     }
-    else {
-        alert("Booking successful!");
-        window.location.href='movie-booking.html';
-
-        localStorage.removeItem("selectedSeatList");
-        localStorage.removeItem("bookingDateTime");
-    }
-} catch (err) {
-    console.error('Error during booking:', err);
-    alert('An error occurred while booking the tickets.');
 }
-}
-
-

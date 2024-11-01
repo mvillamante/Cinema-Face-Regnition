@@ -29,7 +29,7 @@ app.post('/auth/signup', async(req, res) => {
 
         if (result.rows[0][0] > 0) {
             res.status(400).send('Username already exists.');
-        } else {
+        } else {0
             await connection.execute(
                 'INSERT INTO UserAccount (Username, Password) VALUES (:username, :password)',
                 [username, password]
@@ -69,6 +69,7 @@ app.post('/auth/signin', async (req, res) => {
             `SELECT * FROM UserAccount WHERE Username = :username AND Password = :password`,
             [ username, password ]
         );
+
         if (result.rows.length > 0) {
             res.status(200).send('Sign in successful!');
         } else {
@@ -116,11 +117,8 @@ app.post('/api/saveUser', async (req, res) => {
     }
 }); 
 
-app.post('/api/bookTickets', async (req, res) => {
-    const { userName, selectedSeatList, bookingDateTime } = req.body;
-
-    let connection;
-
+app.post('/api/retrieveInfo', async (req, res) => {
+    const { username } = req.body;
 
     try {
         connection = await oracledb.getConnection({
@@ -128,23 +126,87 @@ app.post('/api/bookTickets', async (req, res) => {
             password: 'admin',
             connectString: 'localhost/XEPDB1'
         });
-
-        movieID = M00001;
-
-        console.log(username);
-        console.log(movieId);
-        console.log(seatNo);
-        console.log(dateTime);
-
-        const result = await connection.execute(
-            `INSERT INTO Booking (username, movieId, seatNo, dateTime) VALUES (:userName, :movieID, :selectedSeatList, :bookingDateTime)`,
-            [userName, movieID, selectedSeatList, bookingDateTime]
+        
+        const result = await connection.execute(`SELECT * FROM UserInfo WHERE userName = :username`,
+            [username]
         );
 
-        await connection.commit();
-        res.status(201).send('Booking successful!');
+        if (result.rows.length > 0) {
+            res.status(200).json(result.rows[0]);
+        } else {
+            res.status(404).json([]);
+        }
     } catch (err) {
-        res.status(500).send('An error occurred while booking the tickets.');
+        res.status(500).send('An error occurred. Please try again later.');
+        console.error(err);
+    } finally {
+        if (connection) {
+            try {
+                await connection.close();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    }
+});
+
+app.post('/api/retrieveFullName', async (req, res) => {
+    const { username } = req.body;
+    
+    let connection;
+
+    try {
+        connection = await oracledb.getConnection({
+            user: 'SYSTEM',
+            password: 'admin',
+            connectString: 'localhost/XEPDB1'
+        });
+        
+        const result = await connection.execute(`SELECT fullName FROM UserInfo WHERE userName = :username`,
+            [username]
+        );
+
+        if (result.rows.length > 0) {
+            res.status(200).json(result.rows.map(row => row[0]));
+        } else {
+            res.status(404).json([]);
+        }
+    } catch (err) {
+        res.status(500).send('An error occurred. Please try again later.');
+        console.error(err);
+    } finally {
+        if (connection) {
+            try {
+                await connection.close();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    }
+});
+
+
+app.post('/api/bookTickets', async (req, res) => {
+    const { username, movieId, selectedSeats, bookingDateTime } = req.body;
+
+    let connection;
+
+    try {
+        connection = await oracledb.getConnection({
+            user: 'SYSTEM',
+            password: 'admin',
+            connectString: 'localhost/XEPDB1'
+        }); 
+        for (const seatNo of selectedSeats) {
+            await connection.execute(
+                `INSERT INTO Booking (userName, movieID, seatNo, bookDate)  VALUES (:username, :movieID, :seatNo, TO_TIMESTAMP(:bookingDateTime, 'YYYY-MM-DD HH24:MI:SS'))`,
+            { username, movieId, seatNo, bookingDateTime }
+        );
+    }
+        await connection.commit();
+        res.status(201).json({ message: 'Booking successful!' });
+    } catch (err) {
+        res.status(500).json({ error: 'An error occurred while booking the tickets.', details: err.message });
         console.error(err);
     } finally {
         if (connection) await connection.close();
