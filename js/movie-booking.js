@@ -1,20 +1,19 @@
 var accountType = localStorage.getItem('accountType');
 
+//for movie booking page
+var initializeMainContainer = document.querySelector(".MainContainer");
 
-// Movie Links
-const buyTicketLink = document.querySelector('#buyticket-link');
-const remindMeLink = document.querySelector('#remindMe-link');
-
-// Movies Section Content (USERS)
-function getMovieBookingsHTML() {
-    return `
+// Movies Interface (USER)
+if(accountType == 'user' ){
+    // Initial Display
+    initializeMainContainer.innerHTML = `
         <div class="bookings-container">
             <!-- Inside Out 2 Booking -->
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image">
                         <img src="./images/movies/inside-out-2-poster.jfif" alt="Inside Out 2">
-                        <span class="card-title">Inside Out 2</span>
+                        <span class="card-title"><strong>Inside Out 2</strong></span>
                     </div>
                     <div class="card-action">
                         <a href="movie-viewer.html" class="btn-small red-color">
@@ -29,7 +28,7 @@ function getMovieBookingsHTML() {
                 <div class="card">
                     <div class="card-image">
                         <img src="./images/movies/deadpool-and-wolverine-poster.png" alt="Deadpool and Wolverine">
-                        <span class="card-title">Deadpool and Wolverine</span>
+                        <span class="card-title"><strong>Deadpool and Wolverine</strong></span>
                     </div>
                     <div class="card-action">
                         <a href="#" class="btn-small red-color" style="cursor: not-allowed;">
@@ -44,7 +43,7 @@ function getMovieBookingsHTML() {
                 <div class="card">
                     <div class="card-image">
                         <img src="./images/movies/despicable-me-4-poster.jfif" alt="Despicable Me 4">
-                        <span class="card-title">Despicable Me 4</span>
+                        <span class="card-title"><strong>Despicable Me 4</strong></span>
                     </div>
                     <div class="card-action">
                         <a href="#" class="btn-small red-color" style="cursor: not-allowed;">
@@ -59,7 +58,7 @@ function getMovieBookingsHTML() {
                 <div class="card">
                     <div class="card-image">
                         <img src="./images/movies/smile-2-poster.jpg" alt="Smile 2">
-                        <span class="card-title">Smile 2</span>
+                        <span class="card-title"><strong>Smile 2</strong></span>
                     </div>
                     <div class="card-action">
                         <a href="#" class="btn-small red-color" style="cursor: not-allowed;">
@@ -74,7 +73,7 @@ function getMovieBookingsHTML() {
                 <div class="card">
                     <div class="card-image">
                         <img src="./images/movies/anyone-but-you-poster.jpg" alt="Anyone But You">
-                        <span class="card-title">Anyone But You</span>
+                        <span class="card-title"><strong>Anyone But You</strong></span>
                     </div>
                     <div class="card-action">
                         <a href="#" class="btn-small red-color" style="cursor: not-allowed;">
@@ -85,52 +84,7 @@ function getMovieBookingsHTML() {
             </div>
         </div>
     `;
-}
 
-var initializeMainContainer = document.querySelector(".MainContainer");
-var initializeBookingBanner = document.querySelector(".BookingsBannerContainer");
-// Movies Interface (USER)
-if(accountType == 'user' ){
-    // Initial Display
-    initializeMainContainer.innerHTML = getMovieBookingsHTML();
-
-    //If Movies NavBar is clicked
-    buyTicketLink.addEventListener('click', function(event) {
-        //event.preventDefault(); // Prevent the default link behavior
-        initializeMainContainer.innerHTML = getMovieBookingsHTML();
-    });
-    //If Bookings NavBar is clicked
-    remindMeLink.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the default link behavior
-        initializeBookingBanner.innerHTML = `
-            <div class="bookings-banner">
-            <h2 class="bookings-banner-title">Your Booking History</h2>
-            <p class="bookings-banner-description">View the details of your previous bookings below:</p>
-            </div>
-        `
-        initializeMainContainer.innerHTML = `
-            <div class="bookings-container">
-                <!-- Inside Out 2 Booking -->
-                <!--<div class="col s12 m6 l4">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="./images/movies/inside-out-2-poster.jfif" alt="Inside Out 2">
-                            <span class="card-title">Inside Out 2</span>
-                        </div>
-                        <div class="card-content">
-                            <p><strong>Date:</strong> October 15, 2024</p>
-                            <p><strong>Time:</strong> 7:00 PM</p>
-                            <p><strong>Seats:</strong> A12, A13</p>
-                            <p><strong>Cinema:</strong> 1</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#" class="btn-small red-color"><i class="far fa-bell" style="font-size: 14px;"></i>&nbsp;&nbsp;Remind Me</a>            
-                        </div>
-                    </div>
-                </div>-->
-            </div>
-        `
-    });
 } else if(accountType == 'admin'){ // Movies Interface (ADMIN)
     // Display Cinema Number Options
     initializeMainContainer.innerHTML = `
@@ -174,8 +128,6 @@ if(accountType == 'user' ){
                     </div>
                 </div>
             </div>
-    
-            
         </div>
     `;
 }
@@ -193,8 +145,7 @@ chooseCinemaLink.addEventListener('click', function(event) {
                         <span class="card-title">Inside Out 2</span>
                     </div>
                     <div class="card-action">
-                        <a href="movie-viewer.html" class="btn-small red-color"><i class="fas fa-clapperboard"></i>
-&nbsp;&nbsp;Manage Movie</a>            
+                        <a href="movie-viewer.html" class="btn-small red-color"><i class="fas fa-clapperboard"></i>&nbsp;&nbsp;Manage Movie</a>            
                     </div>
                 </div>
             </div>

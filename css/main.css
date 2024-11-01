@@ -196,6 +196,61 @@ body {
     max-width: 100%;
 }
 
+/* History Container (booking-history)*/
+.history-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.history-container .seating-content{
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+#seatingTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 60px;
+    font-size: 16px;    
+}
+
+#seatingTable thead {
+    color: #d8cdcd;
+    font-size: 20px;
+}
+
+#seatingTable thead th {
+    padding: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#seatingTable tbody tr {
+    background-color: #413c3c;
+    border-bottom: 10px solid #272525;
+}
+
+#seatingTable tbody tr:hover {
+    background-color: #474545;
+}
+
+#seatingTable tbody td {
+    padding: 12px;
+    color: #ebe2e2;
+    text-align: center;
+}
+
+#seatingTable tbody td:last-child {
+    text-align: center;
+}
+
+#seatingTable tbody tr:last-child {
+    border-bottom: none; 
+}
+
 /* Card Styles */
 .card {
     border-radius: 10px;

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>CineBio Booking History</title>
+</head>
+<body>
+    <!--Display Navigation Bar-->
+    <div class="NavBarContainer"></div>
+    <div class="bookings-banner">
+        <h2 class="bookings-banner-title">Your Booking History</h2>
+        <p class="bookings-banner-description">View the details of your previous bookings below:</p>
+    </div>
+    <div class="history-container">
+        <div class="seating-content">
+            <table id="seatingTable">
+                <thead>
+                    <tr>
+                        <th>Movie Title</th>
+                        <th>Seat No.</th>
+                        <th>Time</th>
+                        <th>Quantity</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr> <!--PLACEHOLDER 1-->
+                        <td>Inside Out 2</td>
+                        <td>A12, A13</td>
+                        <td>7:00 PM</td>
+                        <td>2</td>
+                        <td><button class="btn-small red-color"><i class="far fa-bell" style="font-size: 14px;"></i>&nbsp;&nbsp;Remind Me</button></td>
+                    </tr>
+                    <tr> <!--PLACEHOLDER 2-->
+                        <td>Deadpool and Wolverine</td>
+                        <td>C8</td>
+                        <td>9:00 PM</td>
+                        <td>1</td>
+                        <td><button class="btn-small red-color"><i class="far fa-bell" style="font-size: 14px;"></i>&nbsp;&nbsp;Remind Me</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>    
+    
+
+    <footer class="page-footer">
+        <div class="container">
+            <p class="center-align">© 2024 CineBio. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+<script src="js/navbar.js"></script>
+<script src="js/booking-history.js"></script>
+</html>

@@ -74,8 +74,8 @@ if (accountType === 'user') {
         <a href="index.html" class="logo">CineBio</a>
         <ul class="nav">
             <li><a href="homepage.html">Home</a></li>
-            <li><a href="movie-booking.html" id="buyticket-link">Movies</a></li>
-            <li><a href="movie-booking.html" id="remindMe-link">Bookings</a></li>
+            <li><a href="movie-booking.html">Movies</a></li>
+            <li><a href="booking-history.html">Bookings</a></li>
             <li><a href="profile.html" onclick="sessionStorage.setItem('loadProfile', 'true')">Profile</a></li>
         </ul>
         <div class="search">
@@ -116,13 +116,6 @@ if (accountType === 'user') {
 
     console.log(currentUser);
 }
-
-// function displayUsername() {
-//     var username = localStorage.getItem('username');
-
-//     var usernameDisplay = document.querySelector("#username-display");
-//     usernameDisplay.textContent = username;
-// }
 
 // Initialize autocomplete after injecting navbar content
 initializeAutocomplete();
