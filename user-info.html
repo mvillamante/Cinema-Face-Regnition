@@ -1,54 +1,61 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
-        <link rel="stylesheet" href="./css/main.css" />
-        <title>CineBio Login</title>
-    </head>
-    <body>
-        <main class="moreInfo-container">
-            <div class="moreInfo-box">
-                    <div class="moreInfo-wrap">
-                        <form id="user-form" autocomplete="off" class="user-form" onsubmit="saveUser(event)">
-                            <div class="moreInfo-logo">
-                                <!-- <img src="./images/birb.jpeg" id="logo-img" alt="cinebio"> -->
-                                <h4>CineBio</h4>
-                            </div>
-    
-                            <div class="moreInfo-heading">
-                                <h2>Additional Information</h2>
-                            </div>
-    
-                            <div class="moreInfo-form">
-                                <div class="moreInput-wrap">
-                                    <input id="firstName" type="text" minlength="4" class="input-field" autocomplete="off" required />
-                                    <label>First Name</label>
-                                </div>
-    
-                                <div class="moreInput-wrap">
-                                    <input id="lastName" type="text" minlength="4" class="input-field" autocomplete="off" required />
-                                    <label>Last Name</label>
-                                </div>
-                                
-                                <div class="moreInput-wrap">
-                                    <input id="email" type="text" minlength="4" class="input-field" autocomplete="off" required />
-                                    <label>Email Address</label>
-                                </div>
-                                <div class="moreInput-wrap">
-                                    <input id="cellphoneNum" type="text" minlength="4" class="input-field" autocomplete="off" required />
-                                    <label>Cellphone Number</label>
-                                </div>
-                                <input type="submit" value="Submit" class="signUp-btn" />
-    
-                            </div>
-                        </form>
-    
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <title>CineBio Login</title>
+</head>
+
+<body>
+    <main class="moreInfo-container">
+        <div class="moreInfo-box">
+            <div class="moreInfo-wrap">
+                <form id="user-form" autocomplete="off" class="user-form" onsubmit="saveUser(event)">
+                    <div class="moreInfo-logo">
+                        <!-- <img src="./images/birb.jpeg" id="logo-img" alt="cinebio"> -->
+                        <h4>CineBio</h4>
                     </div>
+
+                    <div class="moreInfo-heading">
+                        <h2>Additional Information</h2>
+                    </div>
+
+                    <div class="moreInfo-form">
+                        <div class="moreInput-wrap">
+                            <input id="firstName" type="text" minlength="4" class="input-field" autocomplete="off"
+                                required />
+                            <label>First Name</label>
+                        </div>
+
+                        <div class="moreInput-wrap">
+                            <input id="lastName" type="text" minlength="4" class="input-field" autocomplete="off"
+                                required />
+                            <label>Last Name</label>
+                        </div>
+
+                        <div class="moreInput-wrap">
+                            <input id="email" type="text" minlength="4" class="input-field" autocomplete="off"
+                                required />
+                            <label>Email Address</label>
+                        </div>
+                        <div class="moreInput-wrap">
+                            <input id="cellphoneNum" type="text" minlength="4" class="input-field" autocomplete="off"
+                                required />
+                            <label>Cellphone Number</label>
+                        </div>
+                        <input type="submit" value="Submit" class="signUp-btn" />
+
+                    </div>
+                </form>
+
             </div>
-        </main>
-        <script src="js/signup.js"></script>
-        <script src="js/script.js"></script>
-    </body>
+        </div>
+    </main>
+    <script src="js/signup.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
 </html>

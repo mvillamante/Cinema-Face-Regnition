@@ -6,7 +6,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'http://XXX.XXX.XXX.XXX:5500' /*Change this to your local IP address*/
+    origin: 'http://XXX.XXX.XXX.XXX:5500' /*Change this to your local IP address XXX.XXX.XXX.XXX*/
 }));
 
 
@@ -207,6 +207,49 @@ app.post('/api/bookTickets', async (req, res) => {
         res.status(201).json({ message: 'Booking successful!' });
     } catch (err) {
         res.status(500).json({ error: 'An error occurred while booking the tickets.', details: err.message });
+        console.error(err);
+    } finally {
+        if (connection) await connection.close();
+    }
+});
+
+// get latest booking
+app.post('/api/getLatestBooking', async (req, res) => {
+    const { username } = req.body;
+
+    console.log("fetchBooking function called");
+
+    let connection;
+    try {
+        connection = await oracledb.getConnection({
+            user: 'SYSTEM',
+            password: 'admin',
+            connectString: 'localhost/XEPDB1'
+        }); 
+
+        const result = await connection.execute(
+            `SELECT m.title AS movieTitle,
+            LISTAGG(b.seatNo, ', ') WITHIN GROUP (ORDER BY b.seatNo) AS seatNo,
+            TO_CHAR(b.bookDate, 'YYYY-MM-DD') AS bookingDate,
+            TO_CHAR(b.bookDate, 'HH24:MI:SS') AS bookingTime
+            FROM Booking b
+            JOIN Movie m ON b.movieID = m.movieID
+            WHERE b.userName = :username
+            GROUP BY m.title,  TO_CHAR(b.bookDate, 'YYYY-MM-DD'), TO_CHAR(b.bookDate, 'HH24:MI:SS')
+            ORDER BY TO_CHAR(b.bookDate, 'YYYY-MM-DD') DESC, TO_CHAR(b.bookDate, 'HH24:MI:SS') DESC`
+            , { username }
+        );
+
+        const bookingDetails = result.rows.map(row => ({
+            movieTitle: row[0],
+            seatNo: row[1],
+            bookingDate: row[2],
+            bookingTime: row[3]
+        }));
+
+        res.status(200).json(bookingDetails);
+    } catch (err) {
+        res.status(500).json({ error: 'An error occurred while retrieving the booking details.', details: err.message });
         console.error(err);
     } finally {
         if (connection) await connection.close();

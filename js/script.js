@@ -238,7 +238,7 @@ async function bookTickets(event) {
         if (res.ok) {
             const result = await res.text();
             alert(result);
-            window.location.href = 'movie-booking.html';
+            window.location.href = 'booking-history.html';
         } else {
             console.error('Error booking tickets:', await res.text());
         }
@@ -248,3 +248,62 @@ async function bookTickets(event) {
         alert('An error occurred while booking the tickets.');
     }
 }
+
+//reflect on booking history
+async function fetchBooking(event) {
+    event.preventDefault();
+
+    const username = localStorage.getItem('currentUser');
+
+    try {
+        const res = await fetch('http://localhost:3000/api/getLatestBooking', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username })
+        });
+        
+        if (res.ok) {
+            const bookingDetails = await res.json();
+            const seatingTableBody = document.querySelector('#seatingTable tbody');
+
+            // Clear existing rows (except for the placeholder row)
+            seatingTableBody.innerHTML = '';
+
+            bookingDetails.forEach(booking => {
+                const row = document.createElement('tr');
+
+                const movieTitleCell = document.createElement('td');
+                movieTitleCell.textContent = booking.movieTitle;
+
+                const seatNoCell = document.createElement('td');
+                seatNoCell.textContent = booking.seatNo;
+
+                const bookingTime = booking.bookingTime;
+                let convertedTime = bookingTime === '14:30:00' ? "2:30pm-4:10pm" : "5:20pm-7:00pm";
+
+                const movieTimeCell = document.createElement('td');
+                movieTimeCell.textContent = convertedTime;
+
+                const seatCountCell = document.createElement('td');
+                seatCountCell.textContent = booking.seatNo.split(',').length;
+
+                const remindButtonCell = document.createElement('td');
+                const remindButton = document.createElement('button');
+                remindButton.classList.add('btn-small', 'red-color');
+                remindButton.innerHTML = '<i class="far fa-bell" style="font-size: 14px;"></i>&nbsp;&nbsp;Remind Me';
+                remindButtonCell.appendChild(remindButton);
+
+                row.append(movieTitleCell, seatNoCell, movieTimeCell, seatCountCell, remindButtonCell);
+                seatingTableBody.appendChild(row);
+            });
+        } else {
+            console.error('Error fetching booking history:', await res.text());
+        }
+    } catch (err) {
+        console.error('Error:', err);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', fetchBooking);
