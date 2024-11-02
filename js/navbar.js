@@ -29,14 +29,6 @@ function initializeAutocomplete() {
                 });
 
                 resultBox.innerHTML = "";
-
-                result.forEach((item) => {
-                    const div = document.createElement("div");
-                    div.textContent = item;
-                    resultBox.appendChild(div);
-                });
-
-                console.log(result);
                 display(result);
 
                 if (!result.length) {
@@ -49,15 +41,25 @@ function initializeAutocomplete() {
         }
 
         function display(result) {
-            const content = result.map((list) => {
-                return "<li onclick=selectInput(this)>" + list + "</li>";
+            const content = result.map((item) => {
+                return `<li>${item}</li>`;
             });
             resultBox.innerHTML = "<ul>" + content.join('') + "</ul>";
-        }
 
-        function selectInput(list) {
-            inputBox.value = list.innerHTML;
+            // Add click event listeners to each item
+            const listItems = resultBox.querySelectorAll("li");
+            listItems.forEach(item => {
+                item.onclick = function() {
+                    inputBox.value = item.textContent; // Set the input box value to the clicked item
+
+                    // Check if the clicked item is 'Inside Out 2' to redirect
+                    if (item.textContent === 'Inside Out 2') {
+                        window.location.href = 'movie-viewer.html';
+                    }
+                };
+            });
         }
+        
     }
 }
 
@@ -97,9 +99,6 @@ if (accountType === 'user') {
     <header>
         <link rel="stylesheet" href="css/navbar.css">
         <a href="index.html" class="logo">CineBio</a>
-        <ul class="nav">
-        <li><a href="#">About Us</a></li>
-        </ul>
         <div class="search">
             <input type="text" id="input-box" placeholder="Search" autocomplete="off">
             <i class="fa fa-search" aria-hidden="true"></i>

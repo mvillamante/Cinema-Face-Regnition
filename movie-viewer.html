@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
         <link rel="stylesheet" href="css/movie-viewer.css">
         <title>CineBio Movies Page</title>
     </head>
@@ -37,6 +38,7 @@
                 <div class="sidepage-center-text price-textcontent">₱0.00</div>
             </div>
             <!--<label class="generatedNumber">testing</label>-->
+            <button class="openCamerabtn" id="openModal">Open Camera&nbsp;&nbsp;<i class="fa-solid fa-camera"></i></button>
             <button class="btnSeats" onclick="bookTickets(event)">Book Seats</button>
         </div>
         <div class="cinemabooking-page">
@@ -87,11 +89,24 @@
                 </div>
             </div>
         </div>
+    <div id="modalBox" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Take a picture</h2>
+            <div class="media-container">
+                <video id="video" autoplay></video>
+                <div class="canvas-container">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+            <button class="takePicturebtn" id="capture">Take Picture&nbsp;&nbsp;<i class="fa-solid fa-camera"></i></button>
+        </div>
+    </div>
     </body>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/movie-viewer.js"></script>
     <script src="js/payment.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/camera.js"></script>
 </html>
