@@ -1,9 +1,9 @@
 // DUMMY DATA FOR TABLE
 const registeredSeatsData = [
-    { name: 'Mewo Lee', facePhoto: '/images/stakeholder-melo.jpg', seatNo: 'G11', quantityNo: '1', timeAssigned: '5:20pm-7:00pm', dateAssigned: '2024-10-30'},
-    { name: 'Meo Ling', facePhoto: '/images/stakeholder-melo.jpg', seatNo: 'G10, D13', quantityNo: '2', timeAssigned: '2:30pm-4:10pm', dateAssigned: '2024-10-30' },
-    { name: 'Meyo Wii', facePhoto: '/images/stakeholder-melo.jpg', seatNo: 'G9, I12, J4', quantityNo: '3', timeAssigned: '2:30pm-4:10pm', dateAssigned: '2024-10-30' },
-    { name: 'Me Lo', facePhoto: '/images/stakeholder-melo.jpg', seatNo: 'G8, A10, A13, B15', quantityNo: '4', timeAssigned: '5:20pm-7:00pm', dateAssigned: '2024-10-30' },
+    { name: 'Mewo Lee', seatNo: 'G11', quantityNo: '1', timeAssigned: '5:20pm-7:00pm', dateAssigned: '2024-10-30'},
+    { name: 'Meo Ling', seatNo: 'G10, D13', quantityNo: '2', timeAssigned: '2:30pm-4:10pm', dateAssigned: '2024-10-30' },
+    { name: 'Meyo Wii', seatNo: 'G9, I12, J4', quantityNo: '3', timeAssigned: '2:30pm-4:10pm', dateAssigned: '2024-10-30' },
+    { name: 'Me Lo', seatNo: 'G8, A10, A13, B15', quantityNo: '4', timeAssigned: '5:20pm-7:00pm', dateAssigned: '2024-10-30' },
 ]; 
 
 // CHECK IF THE ACCOUNT IS USER OR ADMIN (temporary)
@@ -63,7 +63,6 @@ if (accountType === 'user') {
     var labels1 = document.querySelectorAll(".sidepage-margin-text");
     var labels2 = document.querySelectorAll(".sidepage-center-text");
     var btn1 = document.querySelector(".btnSeats");
-
     labels1.forEach(label => { label.style.display = 'none'; });
     labels2.forEach(label => { label.style.display = 'none'; });
     btn1.style.display = 'none';
@@ -77,6 +76,7 @@ if (accountType === 'user') {
             <label class="sidepage-text">Total Seats:</label><br/><label class="totalSeats"></label> 
         </div>
     `
+    document.querySelector(".openCamerabtn").style.visibility = 'hidden';
 }
 
 // Initialize selected date and time
@@ -438,23 +438,6 @@ function updateSeatingTable(selectedDate, selectedTime) {
         seatingTableBody.appendChild(row);
     });
 }
-
-//Seating Information Dropdown
-function toggleDropdown() {
-    const content = document.querySelector('.seating-content');
-    const title = document.querySelector('.seating-title');
-
-    // Toggle between adding/removing the "open" class to seating-content
-    content.classList.toggle('open');
-
-    // Change the arrow in the title based on dropdown state
-    if (content.classList.contains('open')) {
-        title.innerHTML = 'Seating Information ▲';
-    } else {
-        title.innerHTML = 'Seating Information ▼';
-    }
-}
-
 
 //Display Initial Seating
 initializeSeating();

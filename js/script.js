@@ -306,4 +306,75 @@ async function fetchBooking(event) {
     }
 }
 
+//Seating Information Dropdown
+async function toggleDropdown() {
+    const content = document.querySelector('.seating-content');
+    const title = document.querySelector('.seating-title');
+
+    // Toggle between adding/removing the "open" class to seating-content
+    content.classList.toggle('open');
+
+    // Change the arrow in the title based on dropdown state
+    if (content.classList.contains('open')) {
+        title.innerHTML = 'Seating Information ▲';
+        await fetchSeatingInfo();
+    } else {
+        title.innerHTML = 'Seating Information ▼';
+        const seatingTableBody = document.querySelector('#seatingTable tbody');
+        console.log("Dropdown closed, clearing table.");
+        seatingTableBody.innerHTML = ''; // Clear the table content when closing
+    }
+}
+
+
+//fetch seating info
+async function fetchSeatingInfo() {
+    console.log("executed");
+    try {
+        const res = await fetch('http://localhost:3000/api/getSeatingInfo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        if (res.ok) {
+            console.log("Response:", res);
+            const bookings = await res.json();
+            console.log("Book:", bookings);
+            const seatingTableBody = document.querySelector('#seatingTable tbody');
+            seatingTableBody.innerHTML = '';
+
+            bookings.forEach(booking => {
+                 const row = document.createElement('tr');
+
+                 const nameCell = document.createElement('td');
+                 nameCell.textContent = booking.fullName;
+
+                 const dateCell = document.createElement('td');
+                 dateCell.textContent = booking.bookingDate;
+
+                const bookingTime = booking.bookingTime;
+                let convertedTime = bookingTime === '14:30:00' ? "2:30pm-4:10pm" : "5:20pm-7:00pm";
+
+                 const timeCell = document.createElement('td');
+                 timeCell.textContent = convertedTime;
+
+                 const seatNoCell = document.createElement('td');
+                 seatNoCell.textContent = booking.seatNo;
+
+                 const quantityCell = document.createElement('td');
+                 quantityCell.textContent = booking.seatNo.split(',').length;
+
+                 row.append(nameCell, dateCell, timeCell, seatNoCell, quantityCell);
+                 seatingTableBody.appendChild(row);
+                });
+            } else {
+                console.error('Error fetching booking data:', await res.text());
+            }
+        } catch (err) {
+            console.error('Error:' , err);
+        }
+    }
+
 document.addEventListener('DOMContentLoaded', fetchBooking);

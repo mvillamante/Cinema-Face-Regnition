@@ -217,8 +217,6 @@ app.post('/api/bookTickets', async (req, res) => {
 app.post('/api/getLatestBooking', async (req, res) => {
     const { username } = req.body;
 
-    console.log("fetchBooking function called");
-
     let connection;
     try {
         connection = await oracledb.getConnection({
@@ -251,6 +249,46 @@ app.post('/api/getLatestBooking', async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: 'An error occurred while retrieving the booking details.', details: err.message });
         console.error(err);
+    } finally {
+        if (connection) await connection.close();
+    }
+});
+
+// to get seating info for admin
+app.post('/api/getSeatingInfo', async (req, res) => {
+    const { username } = req.body;
+    
+    let connection;
+    try {
+        connection = await oracledb.getConnection({
+            user: 'SYSTEM',
+            password: 'admin',
+            connectString: 'localhost/XEPDB1'
+    });
+
+    const result = await connection.execute(
+        `SELECT ui.fullname AS fullName,
+        LISTAGG(b.seatNo, ',') WITHIN GROUP (ORDER BY b.seatNo) AS seatNo,
+        TO_CHAR(b.bookDate, 'YYYY-MM-DD') AS bookingDate,
+        TO_CHAR(b.bookDate, 'HH24:MI:SS') AS bookingTime
+        FROM Booking b
+        JOIN UserInfo ui ON b.userName = ui.username
+        GROUP BY ui.fullname, TO_CHAR(b.bookDate, 'YYYY-MM-DD'), TO_CHAR(b.bookDate, 'HH24:MI:SS')
+        ORDER BY ui.fullname`
+    );
+    
+    const bookings = result.rows.map(row => ({
+        fullName: row[0],
+        seatNo: row[1],
+        bookingDate: row[2],
+        bookingTime: row[3],
+    }));
+
+    console.log(result.rows);
+
+    res.status(200).json(bookings);
+    } catch (err) {
+        res.status(500).json({ error: 'Error retrieving booking information', details: err.message });
     } finally {
         if (connection) await connection.close();
     }
