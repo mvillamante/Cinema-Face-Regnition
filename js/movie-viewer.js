@@ -415,9 +415,10 @@ function updateSeatingTable(selectedDate, selectedTime) {
             } else {
                 // Initialize a new entry for this name
                 groupedSeats[seat.name] = {
-                    facePhoto: seat.facePhoto,
                     quantityNo: seat.quantityNo,
                     seats: matchedSeats,
+                    dateAssigned: seat.dateAssigned, // Add date assigned here
+                    timeAssigned: seat.timeAssigned,
                 };
             }
         }
@@ -426,12 +427,13 @@ function updateSeatingTable(selectedDate, selectedTime) {
     // Now add rows to the seating table body
     Object.entries(groupedSeats).forEach(([name, data]) => {
         // Sort the seats to be displayed
-        data.seats = sortSeatList(data.seats);
+        // data.seats = sortSeatList(data.seats);
 
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${name}</td>
-            <td><img src="${data.facePhoto}" alt="Face Photo"></td>
+            <td>${data.dateAssigned}</td>
+            <td>${data.timeAssigned}</td>
             <td>${data.seats.join(', ')}</td> <!-- Display all matched seat numbers -->
             <td>${data.quantityNo}</td>
         `;

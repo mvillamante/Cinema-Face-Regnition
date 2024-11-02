@@ -314,8 +314,8 @@ async function toggleDropdown() {
     // Toggle between adding/removing the "open" class to seating-content
     content.classList.toggle('open');
 
-    // Change the arrow in the title based on dropdown state
-    if (content.classList.contains('open')) {
+    let selectedDate = document.querySelector('.date-select');
+    if (content.classList.contains('open') &&  selectedDate.value ==='') {
         title.innerHTML = 'Seating Information ▲';
         await fetchSeatingInfo();
     } else {
@@ -325,6 +325,7 @@ async function toggleDropdown() {
         seatingTableBody.innerHTML = ''; // Clear the table content when closing
     }
 }
+
 
 
 //fetch seating info
@@ -345,36 +346,48 @@ async function fetchSeatingInfo() {
             const seatingTableBody = document.querySelector('#seatingTable tbody');
             seatingTableBody.innerHTML = '';
 
+            // Clear the registeredSeatsData
+            registeredSeatsData.length = 0;
+
+            // Populate registeredSeatsData with bookings
             bookings.forEach(booking => {
-                 const row = document.createElement('tr');
-
-                 const nameCell = document.createElement('td');
-                 nameCell.textContent = booking.fullName;
-
-                 const dateCell = document.createElement('td');
-                 dateCell.textContent = booking.bookingDate;
-
-                const bookingTime = booking.bookingTime;
-                let convertedTime = bookingTime === '14:30:00' ? "2:30pm-4:10pm" : "5:20pm-7:00pm";
-
-                 const timeCell = document.createElement('td');
-                 timeCell.textContent = convertedTime;
-
-                 const seatNoCell = document.createElement('td');
-                 seatNoCell.textContent = booking.seatNo;
-
-                 const quantityCell = document.createElement('td');
-                 quantityCell.textContent = booking.seatNo.split(',').length;
-
-                 row.append(nameCell, dateCell, timeCell, seatNoCell, quantityCell);
-                 seatingTableBody.appendChild(row);
+                registeredSeatsData.push({
+                    name: booking.fullName,
+                    seatNo: booking.seatNo,
+                    quantityNo: booking.quantityNo || booking.seatNo.split(',').length, // Count of seats
+                    timeAssigned: booking.bookingTime === '14:30:00' ? "2:30pm-4:10pm" : "5:20pm-7:00pm", // Adjust time format
+                    dateAssigned: booking.bookingDate
                 });
-            } else {
-                console.error('Error fetching booking data:', await res.text());
-            }
-        } catch (err) {
-            console.error('Error:' , err);
+            });
+
+            // Render the updated registeredSeatsData
+            registeredSeatsData.forEach(entry => {
+                const row = document.createElement('tr');
+
+                const nameCell = document.createElement('td');
+                nameCell.textContent = entry.name;
+
+                const dateCell = document.createElement('td');
+                dateCell.textContent = entry.dateAssigned;
+
+                const timeCell = document.createElement('td');
+                timeCell.textContent = entry.timeAssigned;
+
+                const seatNoCell = document.createElement('td');
+                seatNoCell.textContent = entry.seatNo;
+
+                const quantityCell = document.createElement('td');
+                quantityCell.textContent = entry.quantityNo;
+
+                row.append(nameCell, dateCell, timeCell, seatNoCell, quantityCell);
+                seatingTableBody.appendChild(row);
+            });
+        } else {
+            console.error('Error fetching booking data:', await res.text());
         }
+    } catch (err) {
+        console.error('Error:', err);
     }
+}
 
 document.addEventListener('DOMContentLoaded', fetchBooking);
