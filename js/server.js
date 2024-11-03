@@ -4,10 +4,15 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'http://XXX.XXX.XXX.XXX:5500' /*Change this to your local IP address XXX.XXX.XXX.XXX*/
+    origin: 'http://192.168.100.16:5500' /*Change this to your local IP address XXX.XXX.XXX.XXX*/
 }));
+
 
 
 //signup API
@@ -294,7 +299,48 @@ app.post('/api/getSeatingInfo', async (req, res) => {
     }
 });
 
+//image save
+// Define directory path for image storage
+const uploadDir = path.join('C:/Users/WILBERT/Desktop/MMCL Code Stuff/CineBio/Cinema-Face-Regnition/images/user-photos');
 
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+// Middleware to capture 'username' from form data
+app.use((req, res, next) => {
+    if (req.query.username) {
+        req.body.username = req.query.username; // Add username to req.body
+    }
+    next();
+});
+
+// Configure multer for image handling
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, uploadDir);
+    },
+    filename: function (req, file, cb) {
+        const { username } = req.body;
+        const extension = path.extname(file.originalname);
+        cb(null, `${username}${extension}`);
+    }
+});
+
+const upload = multer({ storage });
+
+// Image upload API
+app.post('/api/uploadImage', upload.single('image'), (req, res) => {
+    if (!req.file) {
+        console.error('No file uploaded.');
+        return res.status(400).send('No file uploaded.');
+    }
+
+    // Log the uploaded file information
+    console.log('Uploaded file:', req.file);
+
+    res.status(200).send('Image uploaded successfully!');
+});
 
 app.listen(3000, () => {
     console.log('Server running on http://localhost:3000');

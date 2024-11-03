@@ -1,9 +1,11 @@
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const captureButton = document.getElementById('capture');
+const uploadButton = document.getElementById('upload');
 const modal = document.getElementById('modalBox');
 const openModalButton = document.getElementById('openModal');
 const closeButton = document.querySelector('.close');
+var currentUser = localStorage.getItem('currentUser');
 
 async function initCamera() {
     try {
@@ -39,24 +41,33 @@ captureButton.addEventListener('click', () => {
     canvas.height = video.videoHeight;
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     canvas.style.display = 'flex';
-    // // Get the username from localStorage for filename
-    // const username = localStorage.getItem('currentUser');
-    // const filename = username ? `${username}-image.png` : '-image.png';
+});
 
-    // // Capture the image as a data URL
-    // const picture = canvas.toDataURL('image/png');
+// Upload captured image to the server
+uploadButton.addEventListener('click', async () => {
+    canvas.toBlob(async (blob) => {
+        const formData = new FormData();
+        formData.append("username", `${currentUser}-image.jpg`);
+        formData.append("image", blob, `${currentUser}-image`);
+        
 
-    // // Create a link element to download the image
-    // const downloadLink = document.createElement('a');
-    // downloadLink.href = picture;
-    // downloadLink.download = filename; // Set the filename
-    // document.body.appendChild(downloadLink);
-    // downloadLink.click(); // Programmatically click the link to trigger the download
-    // document.body.removeChild(downloadLink); // Remove the link after downloading
+        try {
+            const response = await fetch("http://localhost:3000/api/uploadImage", {
+                method: "POST",
+                body: formData
+            });
 
-
-    // const pictureData = canvas.toDataURL('image/png');
-    // localStorage.setItem('capturedImage', pictureData);
+            if (response.ok) {
+                alert("Image uploaded successfully!");
+            } else {
+                const errorText = await response.text();
+                alert(`Upload failed: ${errorText}`);
+            }
+        } catch (error) {
+            console.error("Error uploading image:", error);
+            alert("An error occurred during the upload.");
+        }
+    }, "image/jpeg");
 });
 
 
